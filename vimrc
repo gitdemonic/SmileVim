@@ -19,7 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 " 1. plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 " 2. This plugin is used for displaying thin vertical lines at each
-"    indentation level for code indented with spaces. 
+"    indentation level for code indented with spaces.
 Plugin 'Yggdroot/indentLine'
 " 3. This plugin causes all trailing whitespace characters
 Plugin 'ntpeters/vim-better-whitespace'
@@ -81,8 +81,153 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"====================================================================
+" Set general vim property
+" n: Normal mode
+" v: Visual mode
+" i: Insert mode
+" c: Command-line mode
+" a: All mode
+"====================================================================
+syntax on
+set clipboard=unnamed
+set hls
+set cursorline
+
 "=====================================================================
 " General VIM configuration
 "=====================================================================
-set nu!
+" Disable
+set mouse-=a
+" Undo
+nnoremap <silent> <C-z> u
+inoremap <silent> <C-z> <Esc>ua<Left>
+vnoremap <silent> <C-z> ua<Left>
+"Scrapbook, Copy to other termainal
+set clipboard=unnamed
+
+"== text movement operation ==
+""move cursor to the end
+nnoremap <silent> <End><End> <End>a
+"nnoremap <silent> e <End>
+"inoremap <silent> <C-e> <End>
+"move cursor to the home
+"nnoremap <silent> <Home><Home> <Home>a<Left>
+""nnoremap <silent> h <Home>
+"inoremap <silent> <C-h> <Home>
+"enable enter in normal mode
+"nnoremap <silent> <Enter><Enter> a<Left><CR>
+""enable backspace in normal mode
+nnoremap <silent> <Backspace> a<Left><Backspace>
+"enable space in normal mode
+"nnoremap <silent> w<Space> a<Left><Space>
+""fast to file end
+"nnoremap <silent> bg Gzz
+" Keyword search: maps f to first keyword
+nnoremap <silent> f *ggnzz
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+"pageDown
+nnoremap <silent> b <PageDown>
+nnoremap <silent> bb <PageUp>
+"== format file operation ==
+" toggle line number
+set nu
+nnoremap <silent> <C-n> :set invnumber<CR>
+inoremap <silent> <C-n> <Esc>:set invnumber<CR>
+"enable <tab> in normal mode
+nnoremap <silent> <Tab> :><CR>
+nnoremap <silent> <S-Tab> :<<CR>
+inoremap <silent> <S-Tab> <Esc>:<<CR>a<Left>
+vnoremap <silent> <Tab> >
+vnoremap <silent> <S-Tab> <
+
+" auto
+inoremap ( ()<Left>
+inoremap [ []<Left>
+"inoremap < <><Left>
+"inoremap { {<CR>}<Esc>ko
+"inoremap <C-w> /*<Space><Space>*/<Left><Left><Left>
+"noremap <C-w> i/*<Space><Space>*/<Left><Left><Left>
+
+" indent:
+" 	- autoindent: Eveny line will refer to before line
+" 	- smartindent: If detect ')' and '}', it won't not auto indent
+" 	- cindent: for c and java
+set cindent
+
+" load color scheme
+set t_Co=256
+syntax on
+set hlsearch
+set timeoutlen=300
+
+" fold method
+" :help fold-marker
+set foldmethod=marker
+set foldmarker={,}
+set nofoldenable
+
+"expand tab in source code
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml set shiftwidth=4 | set
+"expandtab
+""autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
+"autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
+
+"for taglist
+filetype on
+"for taglist
+let Tlist_Use_SingleClick = 1
+
+"for NERDTree
+let NERDTreeMouseMode = 3
+
+"for srcexpl
+let g:SrcExpl_jumpKey = "<ENTER>"
+
+set ls=2
+set fileencoding=gb18030
+set fileencodings=ucs-bom,gb18030,utf-8,default
+
+" Recommend use it if usually paste function
+set paste
+
+
+"=====================================================================
+" VIM Plugin Settings
+"=====================================================================
+"colorscheme koehler " Color for gvim
+
+
+
+"=====================================================================
+" Not used configuration
+"=====================================================================
+" < Other hotkey >
+"redo
+"inoremap <silent> <C-r> <Esc><C-r>a<Left>
+
+
+" < file navigate operation >
+""switch buffer
+"nnoremap <silent> <C-Right> :bn<CR>
+"inoremap <silent> <C-Right> <Esc>:bn<CR>
+"nnoremap <silent> <C-Left> :bp<CR>
+"inoremap <silent> <C-Left> <Esc>:bp<CR>
+
+
+" < file operation >
+"save file
+"nnoremap <silent> <C-s> :w<CR>
+""inoremap <silent> <C-s> <Esc>:w<CR>
+"exit file without save
+"nnoremap <silent> <C-q> :Bclose!<CR>
+"inoremap <silent> <C-q> <Esc>:Bclose!<CR>
+""exit vi and discard all change
+"nnoremap <silent> <F2> :ExitAll<CR>
+"inoremap <silent> <F2> <Esc>:ExitAll<CR>
+"reload file anyway
+"nnoremap <silent> <F5> :e!<CR>
+"inoremap <silent> <F5> <Esc>:e!<CR>
 
