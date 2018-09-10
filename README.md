@@ -13,3 +13,7 @@
    $ cp -r tokyo-metro.vim/colors ~/.vim/
    $ cp -r tokyo-metro.vim/src ~/.vim/
 
+Refer website:
+1. vim colors: http://vimcolors.com
+2. vim editor plugin: https://www.vim.org/scripts/script_search_results.php?keywords=&script_type=color+scheme&order_by=creation_date&direction=descending&search=search
+
