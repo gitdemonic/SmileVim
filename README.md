@@ -5,4 +5,11 @@
    $ apt-get install  exuberant-ctags  cscope
 3. Install Plugin: add your plugin in vimrc
 4. Install Plugin
-   $vim +PluginInstall
+   $ vim +PluginInstall
+5. Change colors colorscheme(e.g. tokyo-metro.vim)
+   $ cd ~/.vim/
+   $ git clone https://github.com/koirand/tokyo-metro.vim.git
+   $ cp -r tokyo-metro.vim/autoload ~/.vim/
+   $ cp -r tokyo-metro.vim/colors ~/.vim/
+   $ cp -r tokyo-metro.vim/src ~/.vim/
+
