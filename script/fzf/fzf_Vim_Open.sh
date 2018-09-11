@@ -19,7 +19,7 @@ int_handler()
 
 # Search a file with fzf inside a Tmux pane and then open it in an editor
 fzf_then_open_in_editor() {
-  local file=$(fzf-tmux -e --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
+  local file=$(fzf-tmux -e --no-mouse --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
   #local file=$(fzf-tmux)
   # Open the file if it exists
   if [ -n "$file" ]; then
