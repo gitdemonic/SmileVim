@@ -45,10 +45,17 @@ Plugin 'wesleyche/Trinity'
 " 10. Tagbar is a Vim plugin that provides an easy way to browse the tags of
 "     the current file and get an overview of its structure
 Plugin 'majutsushi/tagbar'
-" Skip it first
+" Skip YouCompleteMe first
 "Bundle 'Valloric/YouCompleteMe'
 " 11. A Vim plugin which shows a git diff in the 'gutter' (sign column).
 Plugin 'airblade/vim-gitgutter'
+" 12. Open file and go to line via ':' symbol, e.g. file.txt:123
+"Bundle 'bogado/file-line'
+" 13. fzf on vim
+"Plugin 'junegunn/fzf'
+" 14. ack on vim
+"Plugin 'mileszs/ack.vim'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
