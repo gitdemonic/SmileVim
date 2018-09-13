@@ -23,10 +23,12 @@
       + colorscheme pink-moon
    ```
 
-Refer website:
+## Reference:
 1. [vim colors](http://vimcolors.com)
 2. [vim editor plugin](https://www.vim.org/scripts/script_search_results.php?keywords=&script_type=color+scheme&order_by=creation_date&direction=descending&search=search)
 3. [tokyo-metro](https://github.com/koirand/tokyo-metro.vim)
+4. [vim-pink-moon](https://github.com/sts10/vim-pink-moon)
+
 ## To-Do
 - [ ] How to install and use FZF
 - [ ] vim plugin configuration
