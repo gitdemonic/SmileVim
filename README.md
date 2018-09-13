@@ -15,11 +15,12 @@
    ```
 3. Change colors colorscheme(e.g. tokyo-metro.vim)
    ```
-   $ cd ~/.vim/
-   $ git clone https://github.com/koirand/tokyo-metro.vim.git
-   $ cp -r tokyo-metro.vim/autoload ~/.vim/
-   $ cp -r tokyo-metro.vim/colors ~/.vim/
-   $ cp -r tokyo-metro.vim/src ~/.vim/
+   A. Install color scheme via Vundle, if color scheme is this github([vim-pink-moon](https://github.com/sts10/vim-pink-moon))
+      You can add it to Plugin function on vimrc, like it:
+      + Plugin 'sts10/vim-pink-moon'
+      And then install this plugin via 'vim +PluginInstall'
+   B. Set the color scheme to colorscheme on vimrc, like it:
+      + colorscheme pink-moon
    ```
 
 Refer website:
