@@ -13,9 +13,9 @@
    ```
    $ apt-get install  exuberant-ctags  cscope
    ```
-3. Change colors colorscheme(e.g. tokyo-metro.vim)
+3. Change colors colorscheme(e.g. [vim-pink-moon](https://github.com/sts10/vim-pink-moon))
    ```
-   A. Install color scheme via Vundle, if color scheme is this github([vim-pink-moon](https://github.com/sts10/vim-pink-moon))
+   A. Install color scheme via Vundle, if color scheme is vim-pink-moon.
       You can add it to Plugin function on vimrc, like it:
       + Plugin 'sts10/vim-pink-moon'
       And then install this plugin via 'vim +PluginInstall'
