@@ -25,4 +25,5 @@
    - gl filename.txt
    A. If you want to modify display format for git log --format, it have to modify git log --format optional command on gitfile.sh
    B. If you want to change fzf behivor, it have to modify fzf option on gitfile.sh for fzf command, e.g. preview, search condition...
+   C. If you use gl on screen(linux 'screen'), "Ctrl+L" maybe can help you reflash your windows
 ```
