@@ -210,6 +210,9 @@ set fileencodings=ucs-bom,gb18030,utf-8,default
 " Recommend use it if usually paste function
 set paste
 
+" Quick: hotkey
+nnoremap <silent> <C-o> :copen <CR>
+nnoremap <silent> <C-c> :cclose <CR>
 
 "=====================================================================
 " VIM Plugin Settings
