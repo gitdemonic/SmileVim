@@ -1,0 +1,11 @@
+#!/bin/sh
+
+#total_mem=$(/usr/bin/free -m | /usr/bin/awk '$1 == "Mem:" { print $2 }')
+
+while(true); do
+  current_mem_percentage=$(/usr/bin/free | grep Mem | awk '{print $3/$2 * 100.0}')
+  #current_mem=$(/usr/bin/free -m | /usr/bin/awk '$1 == "-/+" { print $3 }')
+#  echo "${current_mem}MB/${total_mem}MB"
+  echo "${current_mem_percentage}%"
+  sleep 3
+done
