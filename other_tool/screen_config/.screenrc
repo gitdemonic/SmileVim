@@ -102,12 +102,12 @@ bindkey "^[w" focus
 # === 分頁(Tab) ===
 
 # - Ctrl + j/J : 切換至下個視窗。 (C-a n)
-bindkey "^j" next
-bindkey "^J" next
+#bindkey "^j" next
+#bindkey "^J" next
 
 # - Ctrl + k/K : 切換至上個視窗。 (C-a p)
-bindkey "^k" prev
-bindkey "^K" prev
+#bindkey "^k" prev
+#bindkey "^K" prev
 
 
 # == F1, F2, F3 .. ==
