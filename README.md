@@ -23,6 +23,14 @@
       + colorscheme pink-moon
    ```
 
+## Other script
+1. [fvf](https://github.com/gitdemonic/SmileVim/tree/master/script/fzf) is powerful search tool, I upload some script for git log, find file, and search keywork,
+I hope it can replace grep, find command
+
+2. [Screen](https://github.com/gitdemonic/SmileVim/tree/master/other_tool/screen_config) is terminal tool, it can help you manager your terminal, I have some config can show detail message(cpu, memory, and network usage) on status bar and hotkey
+
+3. [Hstr](https://github.com/gitdemonic/SmileVim/tree/master/other_tool/history_plugin) is command history manage, it can quick found out old command
+
 ## Reference:
 1. [vim colors](http://vimcolors.com)
 2. [vim editor plugin](https://www.vim.org/scripts/script_search_results.php?keywords=&script_type=color+scheme&order_by=creation_date&direction=descending&search=search)
