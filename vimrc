@@ -52,7 +52,7 @@ Plugin 'airblade/vim-gitgutter'
 " 12. Open file and go to line via ':' symbol, e.g. file.txt:123
 "Bundle 'bogado/file-line'
 " 13. fzf on vim
-"Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf'
 " 14. ack on vim
 "Plugin 'mileszs/ack.vim'
 
