@@ -186,10 +186,9 @@ set foldmarker={,}
 set nofoldenable
 
 "expand tab in source code
-"autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml set shiftwidth=4 | set
-"expandtab
-""autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
-"autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml set shiftwidth=4 | set expandtab
+"autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 
 "for taglist
@@ -210,9 +209,23 @@ set fileencodings=ucs-bom,gb18030,utf-8,default
 " Recommend use it if usually paste function
 set paste
 
+set modifiable
+
+"find keyword via vimgrep
+nnoremap <silent> <C-f> :vimgrep /\c/ 
+
 " Quick: hotkey
 nnoremap <silent> <C-o> :copen <CR>
 nnoremap <silent> <C-c> :cclose <CR>
+
+" Set background color at colum 80
+set colorcolumn=80
+
+" Show tabs
+set listchars=tab:\|.
+" Show symbol
+set list
+
 
 "=====================================================================
 " VIM Plugin Settings
