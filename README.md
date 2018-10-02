@@ -31,7 +31,7 @@
 
 ## To-Do
 - [ ] How to install and use FZF
-- [ ] vim plugin configuration
+- [X] Plugin base config
 - [ ] FZF in vim
 - [X] Improve fzf_Vim_Open.sh: Back to fzf window when close vim
 - [ ] Improve fzf_Vim_Open.sh: show last keyword

@@ -230,10 +230,193 @@ set list
 "=====================================================================
 " VIM Plugin Settings
 "=====================================================================
+" Scheme: Set color scheme
 "colorscheme koehler " Color for gvim
 colorscheme pink-moon
+" Scheme: Set airline scheme
+let g:lightline = { 'colorscheme': 'pink-moon' }
+" Scheme: Other config
+
+"set cursorline              " Hight background at current cursor line
+hi CursorLine   cterm=NONE ctermbg=237 ctermfg=NONE guibg=darkred guifg=white
+"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"set cursorcolumn
+hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE guibg=darkred guifg=white
+"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 
+"====================================================================
+" Airline settings
+"====================================================================
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+"let g:airline_symbols.space = "\ua0"
+let g:airline_theme='molokai'
+"let g:airline_theme='srcery'
+"let g:airline_theme='iceberg'
+"let g:airline_theme='distinguished'
+"let g:airline_theme='badwolf'
+"let g:airline_theme='sol'
+"let g:airline_theme='stellarized_dark'
+
+if !exists('g:airline_powerline_fonts')
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_left_sep          = '▶'
+  let g:airline_left_alt_sep      = '»'
+  let g:airline_right_sep         = '◀'
+  let g:airline_right_alt_sep     = '«'
+  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+  let g:airline#extensions#readonly#symbol   = '⊘'
+  let g:airline#extensions#linecolumn#prefix = '¶'
+  let g:airline#extensions#paste#symbol      = 'ρ'
+  let g:airline_symbols.linenr    = '␊'
+  let g:airline_symbols.branch    = '⎇'
+  let g:airline_symbols.paste     = 'ρ'
+  let g:airline_symbols.paste     = 'Þ'
+  let g:airline_symbols.paste     = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+else
+"  let g:airline#extensions#tabline#left_sep = ''
+"  let g:airline#extensions#tabline#left_alt_sep = ''
+
+  " powerline symbols
+"  let g:airline_left_sep = ''
+"  let g:airline_left_alt_sep = ''
+"  let g:airline_right_sep = ''
+"  let g:airline_right_alt_sep = ''
+"  let g:airline_symbols.branch = ''
+"  let g:airline_symbols.readonly = ''
+"  let g:airline_symbols.linenr = ''
+endif
+set fileencoding=gb18030
+set fileencodings=ucs-bom,gb18030,utf-8,default
+
+"====================================================================
+" Tagbar Settings
+"====================================================================
+" Open and close the tagbar separately
+nmap <F12> :TagbarToggle<CR>
+
+"====================================================================
+" Indent Settings
+"====================================================================
+" Tabs
+set ts=4
+set tabstop=4
+" - Tab settings: It use 4 space replace tab
+set shiftwidth=4
+set expandtab
+
+" visual indent shift
+vnoremap < <gv
+vnoremap > >gv
+
+"====================================================================
+" MISC Settings
+"====================================================================
+" Shared unamed regitered with primary selection
+set clipboard+=unnamed
+
+"====================================================================
+" Trinity Settings
+"====================================================================
+" Open and close all the three plugins on the same time
+nmap <F8>  :TrinityToggleAll<CR>
+
+" Open and close the Source Explorer separately
+nmap <F10>  :TrinityToggleSourceExplorer<CR>
+
+" Open and close the Taglist separately
+nmap <F9> :TrinityToggleTagList<CR>
+
+" Open and close the NERD Tree separately
+nmap <F11> :TrinityToggleNERDTree<CR>
+
+" YouCompeleteMe python config
+"let g:ycm_global_ycm_extra_conf = '/home/thl/.vim/ycm_extra_conf'
+
+" GitGutter
+let g:gitgutter_enable = 1
+
+
+"====================================================================
+" Cscope Settings
+"====================================================================
+" Cscope settings
+"if has("cscope")
+"    set csto=0
+"    set cst
+"    set nocsverb
+" add any database in current directory
+"    if filereadable("cscope.out")
+"       cs add cscope.out
+"    else add database pointed to by environment
+"    elseif $CSCOPE_DB != ""
+"    cs add $CSCOPE_DB
+"    endif
+"    set csverb
+"endif
+
+nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+"=====================================================================
+" FZF(Experiment)
+"=====================================================================
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+command! -bang Colors
+  \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 60%,0'}, <bang>0)
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+"command! -bang -nargs=* Ag
+"  \ call fzf#vim#ag(<q-args>,
+"  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+"  \                 <bang>0)
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:40%'),
+  \                 <bang>0)
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+"let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h %ce %s %d %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@ Appendix                                                          @
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "=====================================================================
 " Not used configuration
 "=====================================================================
