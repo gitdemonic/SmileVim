@@ -216,10 +216,6 @@ set modifiable
 "find keyword via vimgrep
 nnoremap <silent> <C-f> :vimgrep /\c/ 
 
-" Quick: hotkey
-nnoremap <silent> <C-o> :copen <CR>
-nnoremap <silent> <C-c> :cclose <CR>
-
 " Set background color at colum 80
 set colorcolumn=80
 
@@ -416,6 +412,28 @@ let g:fzf_tags_command = 'ctags -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+"=====================================================================
+" Qickfix toggle(Experiment)
+"=====================================================================
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+  if exists("g:qfix_win") && a:forced == 0
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr("$")
+  endif
+endfunction
+
+" Quick: hotkey
+nmap <silent> <C-c> :QFix<CR>
+
+" <TBD>
+"nmap <silent> <C-c> \` :QFix<CR>
+"nnoremap <silent> <C-o> :copen <CR>
+"nnoremap <silent> <C-c> :cclose <CR>
 
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@ Appendix                                                          @
