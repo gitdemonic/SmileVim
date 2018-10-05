@@ -53,6 +53,7 @@ Plugin 'airblade/vim-gitgutter'
 "Bundle 'bogado/file-line'
 " 13. fzf on vim
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " 14. ack on vim
 "Plugin 'mileszs/ack.vim'
 
@@ -62,6 +63,7 @@ Plugin 'junegunn/fzf'
 " How to use color scheme?
 " 1. Install color scheme via vundle, like it:
 Plugin 'sts10/vim-pink-moon'
+Plugin 'koirand/tokyo-metro.vim'
 " 2. Add colorscheme after Run vundle, like it:
 " colorscheme pink-moon
 
@@ -232,7 +234,8 @@ set list
 "=====================================================================
 " Scheme: Set color scheme
 "colorscheme koehler " Color for gvim
-colorscheme pink-moon
+"colorscheme pink-moon
+colorscheme tokyo-metro
 " Scheme: Set airline scheme
 let g:lightline = { 'colorscheme': 'pink-moon' }
 " Scheme: Other config
