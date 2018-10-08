@@ -179,7 +179,7 @@ set cindent
 set t_Co=256
 syntax on
 set hlsearch
-set timeoutlen=300
+set timeoutlen=200
 
 " fold method
 " :help fold-marker
@@ -233,7 +233,8 @@ set list
 "colorscheme pink-moon
 colorscheme tokyo-metro
 " Scheme: Set airline scheme
-let g:lightline = { 'colorscheme': 'pink-moon' }
+"let g:lightline = { 'colorscheme': 'pink-moon' }
+let g:lightline = { 'colorscheme': 'tokyo-metro' }
 " Scheme: Other config
 
 "set cursorline              " Hight background at current cursor line
@@ -412,6 +413,20 @@ let g:fzf_tags_command = 'ctags -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 "=====================================================================
 " Qickfix toggle(Experiment)
