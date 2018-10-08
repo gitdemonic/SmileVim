@@ -116,8 +116,11 @@ set cursorline
 "=====================================================================
 " General VIM configuration
 "=====================================================================
-" Disable
+" Mouse mode: default set disable
 set mouse-=a
+" Mouse mode: Toggle hotkey
+nnoremap <silent> <C-x> :call ToggleMouse() <CR>
+
 " Undo
 nnoremap <silent> <C-z> u
 inoremap <silent> <C-z> <Esc>ua<Left>
@@ -444,6 +447,20 @@ endfunction
 
 " Quick: hotkey
 nmap <silent> <C-c> :QFix<CR>
+
+"=====================================================================
+" Function Experiment
+"=====================================================================
+function! ToggleMouse()
+    " check if mouse is enabled
+    if &mouse == 'a'
+        " disable mouse
+        set mouse=
+    else
+        " enable mouse everywhere
+        set mouse=a
+    endif
+endfunc
 
 " <TBD>
 "nmap <silent> <C-c> \` :QFix<CR>
