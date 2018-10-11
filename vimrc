@@ -56,6 +56,9 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 " 14. ack on vim
 "Plugin 'mileszs/ack.vim'
+" 15. file-line
+Plugin 'bogado/file-line'
+
 
 "-------------------------------------------------------------------
 " Vim Color
@@ -233,11 +236,11 @@ set list
 "=====================================================================
 " Scheme: Set color scheme
 "colorscheme koehler " Color for gvim
-"colorscheme pink-moon
-colorscheme tokyo-metro
+colorscheme pink-moon
+"colorscheme tokyo-metro
 " Scheme: Set airline scheme
-"let g:lightline = { 'colorscheme': 'pink-moon' }
-let g:lightline = { 'colorscheme': 'tokyo-metro' }
+let g:lightline = { 'colorscheme': 'pink-moon' }
+"let g:lightline = { 'colorscheme': 'tokyo-metro' }
 " Scheme: Other config
 
 "set cursorline              " Hight background at current cursor line
