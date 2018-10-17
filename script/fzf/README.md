@@ -15,8 +15,8 @@
    so we just alias it on ~/.bashrc, like it:
    // .bashrc
    ...
-   + alias fv='~/.vim/script/fzf/fzf_Vim_Open.sh'
-   + alias gl='/home/henry/.vim/script/fzf/gitfile.sh'
+   +++ alias fv='$HOME/.vim/script/fzf/fzf_Vim_Open.sh'
+   +++ alias gl='$HOME/.vim/script/fzf/gitfile.sh'
    ...
 
 3. The gitfile.sh base on .git directory, when you use it your currently directory have '.git' folder.
@@ -30,8 +30,14 @@
 4. (experiment) grep + fzf:
    A. Add script to .bashrc, example:
    ...
-   alias fg='/home/henry/github/gitdemonic/SmileVim/script/fzf/fzf_grep.sh
+   +++ alias fg='$HOME/.vim/script/fzf/fzf_grep.sh
    ...
    B. How to use?
    $ fg
+
+5. cd.sh, find out directory and show it via fzf, and then cd to the path
+   // .bashrc
+   ...
+   +++ alias c='. $HOME/.vim/script/fzf/cd.sh'
+   ...
 ```
