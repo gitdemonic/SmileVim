@@ -1,0 +1,24 @@
+#!/bin/bash
+
+CTAG_FILE="ctag.files"
+CSCOPE_FILE="cscope.files"
+
+echo -n "remove old files..."
+rm -rf $CTAG_FILE $CTAG_FILE_FOR_CSCOPE $CSCOPE_FILE cscope.* tags
+echo "done !!"
+
+echo -n "generate ctag file..."
+# for reference: add " at begin and end when execute find
+#find . \( -path './build' -o -path './cts' -o -path './docs' -o -path './gdk' -o -path './ndk' -o -path './pdk' -o -path './prebuilts' -o -path './sdk' -o -path './tools' \) -a -prune -o -iname *.java -o -iname *.cpp -o -iname *.c -o -iname *.h -type f -exec echo \"{}\" \; > cscope.files
+
+# for ctag use
+find . \( -path './build' -o -path './cts' -o -path './docs' -o -path './gdk' -o -path './ndk' -o -path './pdk' -o -path './prebuilts' -o -path './sdk' -o -path './tools' -o -path './out' \) -a -prune -o -type f -iname '*.java' -o -type f -iname '*.cpp' -o -type f -iname '*.c' -o -type f -iname '*.h' -o -type f -iname '*.conf*' -o -type f -iname '*.xml' -o -type f -iname '*.dts*' -o -type f -iname '*.aidl' -o -type f -iname '*.S' -o -type f -iname '*.rc' -o -type f -iname '*.mk' -o -type f -iname '*.txt' -o -type f -iname '*.hidl' -o -type f -iname '*.dtsi' | sed "s:./::" | sed "s:^:`pwd`/:" > $CTAG_FILE
+
+ctags -L $CTAG_FILE
+echo "done !!"
+
+echo -n "generate cscope file..."
+sed 's/^/"/;s/$/"/' $CTAG_FILE > $CSCOPE_FILE
+cscope -bCkR -i $CSCOPE_FILE >/dev/null 2>&1
+#rm -rf $CTAG_FILE
+echo "done !!"
