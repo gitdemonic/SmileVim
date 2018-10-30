@@ -28,10 +28,10 @@ fzf_then_open_in_editor() {
 fzf_preview() {
     if [[ $1 == '-p' ]]; then
         file=$(fzf-tmux -e --reverse --no-mouse --height 40% --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
-: <<'END'
-    elif [ $1 == '-pd']; then
+    elif [[ $1 == '-pf' ]]; then
+        file=$(fzf-tmux -e --reverse --no-mouse --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
+    elif [[ $1 == '-pd' ]]; then
         file=$(fzf-tmux -e --reverse --no-mouse --height 40% --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null' --preview-window down:wrap)
-END
     else
         file=$(fzf-tmux -e --reverse --no-mouse --height 40%)
     fi
