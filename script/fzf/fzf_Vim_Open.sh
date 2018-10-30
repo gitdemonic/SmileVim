@@ -11,16 +11,13 @@ function ctrl_c() {
 
 # Search a file with fzf inside a Tmux pane and then open it in an editor
 fzf_then_open_in_editor() {
-    if [ $1 == '-np' ]; then
-        file=$(fzf-tmux -e --no-mouse)
-    else
-        file=$(fzf-tmux -e --no-mouse --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
-    fi
     # Open the file if it exists
+    fzf_preview $1
 #: <<'END'
+    # Open file via VIM
     while [ -n "$file" ]; do
         ${EDITOR:-vim} "$file"
-        fzf_preview
+        fzf_preview $1
     done
 #END
 
@@ -29,8 +26,18 @@ fzf_then_open_in_editor() {
 }
 
 fzf_preview() {
+    if [[ $1 == '-p' ]]; then
+        file=$(fzf-tmux -e --reverse --no-mouse --height 40% --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
+: <<'END'
+    elif [ $1 == '-pd']; then
+        file=$(fzf-tmux -e --reverse --no-mouse --height 40% --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null' --preview-window down:wrap)
+END
+    else
+        file=$(fzf-tmux -e --reverse --no-mouse --height 40%)
+    fi
+
 #    file=$(fzf-tmux -e --no-mouse --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null' -q $file)
-    file=$(fzf-tmux -e --no-mouse --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
+#    file=$(fzf-tmux -e --no-mouse --preview '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null')
 }
 
 #bind -x '"\C-t": fzf_then_open_in_editor'
