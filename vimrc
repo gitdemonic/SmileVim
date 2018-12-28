@@ -59,6 +59,9 @@ Plugin 'junegunn/fzf.vim'
 " 15. file-line
 Plugin 'bogado/file-line'
 
+" (TBD) 16. vimagit
+Plugin 'jreybert/vimagit'
+
 
 "-------------------------------------------------------------------
 " Vim Color
@@ -67,6 +70,7 @@ Plugin 'bogado/file-line'
 " 1. Install color scheme via vundle, like it:
 Plugin 'sts10/vim-pink-moon'
 Plugin 'koirand/tokyo-metro.vim'
+Plugin 'srcery-colors/srcery-vim'
 " 2. Add colorscheme after Run vundle, like it:
 " colorscheme pink-moon
 
@@ -125,24 +129,24 @@ set mouse-=a
 nnoremap <silent> <C-x> :call ToggleMouse() <CR>
 
 " Undo
-nnoremap <silent> <C-z> u
-inoremap <silent> <C-z> <Esc>ua<Left>
-vnoremap <silent> <C-z> ua<Left>
+"nnoremap <silent> <C-z> u
+"inoremap <silent> <C-z> <Esc>ua<Left>
+"vnoremap <silent> <C-z> ua<Left>
 "Scrapbook, Copy to other termainal
 set clipboard=unnamed
 
 "== text movement operation ==
 ""move cursor to the end
 nnoremap <silent> <End><End> <End>a
-"nnoremap <silent> e <End>
-"inoremap <silent> <C-e> <End>
-"move cursor to the home
+nnoremap <silent> e <End>
+inoremap <silent> <C-e> <End>
+" move cursor to the home
 "nnoremap <silent> <Home><Home> <Home>a<Left>
 ""nnoremap <silent> h <Home>
 "inoremap <silent> <C-h> <Home>
 "enable enter in normal mode
 "nnoremap <silent> <Enter><Enter> a<Left><CR>
-""enable backspace in normal mode
+" enable backspace in normal mode
 nnoremap <silent> <Backspace> a<Left><Backspace>
 "enable space in normal mode
 "nnoremap <silent> w<Space> a<Left><Space>
@@ -153,8 +157,8 @@ nnoremap <silent> f *ggnzz
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 "pageDown
+nnoremap <silent> B <PageUp>
 nnoremap <silent> b <PageDown>
-nnoremap <silent> bb <PageUp>
 "== format file operation ==
 " toggle line number
 set nu
@@ -236,10 +240,24 @@ set list
 "=====================================================================
 " Scheme: Set color scheme
 "colorscheme koehler " Color for gvim
-colorscheme pink-moon
-"colorscheme tokyo-metro
+"colorscheme pink-moon
+colorscheme tokyo-metro
+"let g:srcery_italic = 1
+"let g:srcery_bold = 1
+"let g:srcery_italic = 0
+"let g:srcery_transparent_background = 0
+"let g:srcery_underline = 1
+"let g:srcery_undercurl = 1
+"let g:srcery_inverse = 1
+"let g:srcery_inverse_match_paren = 0
+"let g:srcery_dim_lisp_paren = 0 
+"colorscheme srcery
+
+
+
 " Scheme: Set airline scheme
 let g:lightline = { 'colorscheme': 'pink-moon' }
+"let g:lightline = { 'colorscheme': 'srcery' }
 "let g:lightline = { 'colorscheme': 'tokyo-metro' }
 " Scheme: Other config
 
@@ -396,16 +414,16 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-"command! -bang -nargs=* Ag
-"  \ call fzf#vim#ag(<q-args>,
-"  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-"  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-"  \                 <bang>0)
-
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
-  \                 fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:40%'),
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%', '?'),
   \                 <bang>0)
+
+"command! -bang -nargs=* Ag
+"  \ call fzf#vim#ag(<q-args>,
+"  \                 fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:50%'),
+"  \                 <bang>0)
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -470,6 +488,16 @@ endfunc
 "nnoremap <silent> <C-o> :copen <CR>
 "nnoremap <silent> <C-c> :cclose <CR>
 
+"====================================================================
+" IndentLinesToggle Setting
+"====================================================================
+" Toggle cope mode
+"nnoremap <silent> <C-p> :IndentLinesToggle<CR>
+"nnoremap <silent> <C-x> :call ToggleCopyMode() <CR>
+"function! ToogleCopyMode()
+"    :IndentLinesToggle
+"endfunc
+
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@ Appendix                                                          @
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -478,7 +506,7 @@ endfunc
 "=====================================================================
 " < Other hotkey >
 "redo
-"inoremap <silent> <C-r> <Esc><C-r>a<Left>
+nnoremap <silent> <C-r> <Esc><C-r>a<Left>
 
 
 " < file navigate operation >
@@ -494,7 +522,7 @@ endfunc
 "nnoremap <silent> <C-s> :w<CR>
 ""inoremap <silent> <C-s> <Esc>:w<CR>
 "exit file without save
-"nnoremap <silent> <C-q> :Bclose!<CR>
+nnoremap <silent> <C-z> :q<CR>
 "inoremap <silent> <C-q> <Esc>:Bclose!<CR>
 ""exit vi and discard all change
 "nnoremap <silent> <F2> :ExitAll<CR>
@@ -503,3 +531,8 @@ endfunc
 "nnoremap <silent> <F5> :e!<CR>
 "inoremap <silent> <F5> <Esc>:e!<CR>
 
+" Magit config test:
+autocmd User VimagitUpdateFile
+    \ if ( exists("*gitgutter#process_buffer") ) |
+    \   call gitgutter#process_buffer(bufnr(g:magit_last_updated_buffer), 0) |
+    \ endif
