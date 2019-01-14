@@ -239,9 +239,9 @@ set list
 " VIM Plugin Settings
 "=====================================================================
 " Scheme: Set color scheme
-"colorscheme koehler " Color for gvim
+colorscheme koehler " Color for gvim
 "colorscheme pink-moon
-colorscheme tokyo-metro
+"colorscheme tokyo-metro
 "let g:srcery_italic = 1
 "let g:srcery_bold = 1
 "let g:srcery_italic = 0
@@ -364,9 +364,15 @@ nmap <F11> :TrinityToggleNERDTree<CR>
 " YouCompeleteMe python config
 "let g:ycm_global_ycm_extra_conf = '/home/thl/.vim/ycm_extra_conf'
 
+
+"====================================================================
+" GitGutter
+"====================================================================
+
 " GitGutter
 let g:gitgutter_enable = 1
-
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
 "====================================================================
 " Cscope Settings
@@ -452,6 +458,8 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
+map <F4> :Buffer<CR>
+
 "=====================================================================
 " Qickfix toggle(Experiment)
 "=====================================================================
@@ -468,6 +476,9 @@ endfunction
 
 " Quick: hotkey
 nmap <silent> <C-c> :QFix<CR>
+
+"=====================================================================
+"=====================================================================
 
 "=====================================================================
 " Function Experiment
