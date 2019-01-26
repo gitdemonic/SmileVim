@@ -120,6 +120,8 @@ filetype plugin indent on    " required
 syntax on
 set clipboard=unnamed
 set hls
+set incsearch
+set hlsearch
 set cursorline
 
 "=====================================================================
@@ -321,6 +323,8 @@ else
 endif
 set fileencoding=gb18030
 set fileencodings=ucs-bom,gb18030,utf-8,default
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set laststatus=2
 
 "====================================================================
 " Tagbar Settings
