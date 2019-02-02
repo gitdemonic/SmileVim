@@ -1,0 +1,10 @@
+[user]
+    name = Henry
+    email = mydemonic@gmail.com
+[core]
+    editor = vim
+[alias]
+    co = checkout
+    st = status
+    df = diff
+    br = branch

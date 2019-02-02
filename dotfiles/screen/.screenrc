@@ -1,0 +1,141 @@
+# 大部分設定參考 凍仁 部落格, Link: http://note.drx.tw/2011/03/screenrc-of-vimperator-like.html
+# 關閉啟動訊息
+startup_message off
+term "screen-256color"
+
+# 水平分割分頁
+#bindkey "^[s" split
+
+# 切換游標所在的分頁
+bindkey "^[f" focus
+
+# 離開分頁
+bindkey "^[q" only
+
+# 加入狀態列
+caption always "%{=u .r} %-w%<%{=ub .Y}%n %t%{=u .r}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .Y}$USER%{= .R}@%H %=%{= .m} %Y/%m/%d%{= .M} %0c "
+
+# CPU, mempry and network speed information
+# backticks to display information in the statusbar
+backtick 1 0 0 /usr/local/bin/screen-mem-usage
+backtick 2 0 0 /usr/local/bin/screen-cpu-usage
+backtick 3 0 0 /usr/bin/ifstat -i enp0s31f6 1
+
+hardstatus alwayslastline
+#hardstatus string '%{kg}Host:%{kG}%H%{kg} %=%{kb}Mem:%{kB}%1`  %{ky}Cpu:%{kY}%2`%%  %{kR}Load:%{kr}%l%=%{kc} %D %m/%d %{kC}%C%a%{w}'
+hardstatus string '%{kg}Host:%{kG}%H%{kg} %=%{kb}Mem:%{kB}%1` %{ky}Cpu:%{kY}%2`%% %{kR}Net(in,out):%{kR}%3`% KB/s %{kw}Load:%{kw}%l%=%{kc} %D %m/%d %{kC}%C%a%{w}'
+
+
+# 將預設編碼設為 UTF-8。
+defutf8 on
+utf8 on on
+
+# = 自訂熱鍵 =
+
+# == Alt ==
+
+# - Alt + r : 清理當前視窗。 (C-a c)
+bindkey "^[r" clear
+
+# - Alt + s : 進入複製/捲動模式。 (C-a esc)
+bindkey "^[s" copy
+
+# - Alt + h : 將 screen 丟至背景執行。 (C-a d)
+bindkey "^[h" detach
+
+# - Alt + i : 顯示所有執行中的 screen。 (C-a *)
+bindkey "^[i" displays
+
+# - Alt + L : 將 screen 上鎖。 (C-a C-x)
+#bindkey "^[l" lockscreen
+
+# === 分頁(Tab) ===
+
+# - Alt + t : 新增子視窗。(C-a c)
+bindkey "^[t" screen
+
+# - Alt + d : 關閉當前視窗。 (C-a k)
+bindkey "^[d" kill
+
+# - Alt + j/J : 切換至下個視窗。 (C-a n)
+bindkey "^[j" next
+bindkey "^[J" next
+
+# - Alt + k/K : 切換至上個視窗。 (C-a p)
+bindkey "^[k" prev
+bindkey "^[K" prev
+
+# - Alt + `/= : 切換子視窗 0 ~ 子視窗12。
+bindkey "^[`" select 0
+bindkey "^[1" select 1
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9
+bindkey "^[0" select 10
+bindkey "^[-" select 11
+bindkey "^[=" select 12
+
+# === 分割(Split) ===
+
+# - Alt + o : 水平分割當前視窗。 (C-a S) 
+bindkey "^[o" split
+
+# - Alt + e : 垂直分割當前視窗。 (C-a |) 
+bindkey "^[e" split -v
+
+# - Alt + q : 關閉當前分割區。 (C-a X)
+bindkey "^[q" remove
+
+# - Alt + w : 切換當前分割區。 (C-a tab)
+bindkey "^[w" focus
+
+
+# == Ctrl ==
+
+# === 分頁(Tab) ===
+
+# - Ctrl + j/J : 切換至下個視窗。 (C-a n)
+#bindkey "^j" next
+#bindkey "^J" next
+
+# - Ctrl + k/K : 切換至上個視窗。 (C-a p)
+#bindkey "^k" prev
+#bindkey "^K" prev
+
+
+# == F1, F2, F3 .. ==
+
+# F5 : 新增子視窗。(C-a c)
+bindkey -k k5 screen
+
+# F6 : 自訂當前視窗標題。 (C-a A)
+bindkey -k k6 title
+
+# F7 : 進入複製/捲動模式。 (C-a esc)
+bindkey -k k7 copy
+
+# F8 : 切換至上一個視窗。 (C-a p)
+#bindkey -k k8 prev
+
+# F9 : 切換至下一個視窗。 (C-a n)
+#bindkey -k k9 next
+
+# F10 : 切換當前分割區。 (C-a tab)
+#bindkey -k k10 focus
+
+# Mouse
+#mousetrack on
+
+# Enable 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+altscreen on

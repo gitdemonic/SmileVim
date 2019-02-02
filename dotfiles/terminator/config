@@ -1,0 +1,65 @@
+[global_config]
+  focus = system
+  title_transmit_bg_color = "#d30102"
+[keybindings]
+  close_term = <Ctrl><Shift>W
+  full_screen = <Ctrl><Shift>F
+  new_tab = <Ctrl>T
+  new_window = <Ctrl>N
+  reset_clear = <Ctrl>R
+  scaled_zoom = <Ctrl><Shift>K
+  search = <Ctrl>F
+  split_horiz = <Ctrl><Shift>E
+  split_vert = <Ctrl>E
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = solarized-light
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      profile = solarized-light
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#eee8d5"
+    background_darkness = 0.7
+    background_image = None
+    background_type = transparent
+    copy_on_selection = True
+    cursor_color = "#002b36"
+    font = Tinos for Powerline 10
+    foreground_color = "#002b36"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scroll_on_output = False
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[solarized-dark]]
+    background_color = "#002b36"
+    background_darkness = 0.7
+    background_image = None
+    background_type = transparent
+    copy_on_selection = True
+    cursor_color = "#eee8d5"
+    font = Roboto Mono for Powerline 10
+    foreground_color = "#eee8d5"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scroll_on_output = False
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[solarized-light]]
+    background_color = "#eee8d5"
+    background_image = None
+    copy_on_selection = True
+    cursor_color = "#002b36"
+    font = Monaco 11
+    foreground_color = "#002b36"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#97907c:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scroll_on_output = False
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
