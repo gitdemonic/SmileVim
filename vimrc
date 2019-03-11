@@ -231,8 +231,12 @@ set paste
 
 set modifiable
 
-"find keyword via vimgrep
-nnoremap <silent> <C-f> :vimgrep /\c/ 
+"Description: Find keyword via vimgrep
+"   This mapping uses <cword> to get the word under the cursor, and
+"   isearches for it in the current directory and all subdirectories, opening
+"   the quickfix window when done
+"map <F3> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
+nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
 
 " Set background color at colum 80
 set colorcolumn=80
