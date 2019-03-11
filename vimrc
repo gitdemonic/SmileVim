@@ -1,255 +1,288 @@
+"==== Overview ================================================================
+" 1. Vundle_Plugins_ColorScheme
+" 2. General_Config
+"		2.1		Default
+"		2.2		Keybind
+"		2.3		Autocmd
+" 3. Plugin_Config
+"		3.0		colorscheme +++
+"		3.1		tpope/vim-fugitive
+"		3.2		Yggdroot/indentLine
+"		3.3		ntpeters/vim-better-whitespace
+"		3.4		vim-airline/vim-airline +++
+"		3.5		vim-airline/vim-airline-themes
+"		3.6		vim-scripts/taglist.vim
+"		3.7		scrooloose/nerdtree
+"		3.8		wesleyche/SrcExpl
+"		3.9		wesleyche/Trinity +++
+"		3.10	majutsushi/tagbar
+"		3.11	airblade/vim-gitgutter +++
+"		3.12	junegunn/fzf +++
+"		3.13	junegunn/fzf.vim +++
+"		3.14	bogado/file-line
+"		3.15	jreybert/vimagit
+"		3.16	iberianpig/tig-explorer.vim +++
+"		3.17	(Unused) vim-syntastic/syntastic
+"		3.18	Valloric/YouCompleteMe +++
+"		3.30	(Color) sts10/vim-pink-moon
+"		3.31	(Color) koirand/tokyo-metro.vim
+"		3.32	(Color) srcery-colors/srcery-vim
+" 4. Function
+"		4.1		Mouse_toggle()
+"		4.2		Qucikfile_toggle()
+" 5. Bug_workaround
+" 6. Appendix
+"==== END Overview ============================================================
+
+"==== 1. Vundle_Plugins_ColorScheme ===========================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+" * set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
+" * alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" * let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-"====================================================================
-" Write your plugins here
-"====================================================================
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" 1. plugin on GitHub repo
+"---- 1.1. Plugins ------------------------------------------------------------
+" * Write your plugins here
+" * The following are examples of different formats supported.
+" * Keep Plugin commands between vundle#begin/end.
+" * 1. plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" 2. This plugin is used for displaying thin vertical lines at each
-"    indentation level for code indented with spaces.
+" * 2. This plugin is used for displaying thin vertical lines at each
+"      indentation level for code indented with spaces.
 Plugin 'Yggdroot/indentLine'
-" 3. This plugin causes all trailing whitespace characters
+" * 3. This plugin causes all trailing whitespace characters
 Plugin 'ntpeters/vim-better-whitespace'
-" 4. Lean & mean status/tabline for vim that's light as air.
+" * 4. Lean & mean status/tabline for vim that's light as air.
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" 5. This file contains some boilerplate settings for vim's cscope interface,
-"    plus some keyboard mappings that I've found useful.
+" * 5. This file contains some boilerplate settings for vim's cscope interface,
+"      plus some keyboard mappings that I've found useful.
 "Plugin 'chazy/cscope_maps'
-" 6. The "Tag List" plugin is a source code browser for the Vim editor.
+" * 6. The "Tag List" plugin is a source code browser for the Vim editor.
 Plugin 'vim-scripts/taglist.vim'
-" 7. The NERDTree is a file system explorer for the Vim editor. Using this
-"    plugin, users can visually browse complex directory hierarchies, quickly
-"    open files for reading or editing, and perform basic file system operations.
+" * 7. The NERDTree is a file system explorer for the Vim editor. Using this
+"      plugin, users can visually browse complex directory hierarchies, quickly
+"      open files for reading or editing, and perform basic file system operations.
 Plugin 'scrooloose/nerdtree'
-" 8. SrcExpl (Source Explorer) is a source code explorer that provides context
-"    for the currently selected keyword by displaying the function or type
-"    definition or declaration in a separate window
+" * 8. SrcExpl (Source Explorer) is a source code explorer that provides context
+"      for the currently selected keyword by displaying the function or type
+"      definition or declaration in a separate window
 Plugin 'wesleyche/SrcExpl'
-" 9. The Trinity plugin manages Source Explorer, Taglist and NERD Tree, and
-"    build them as a great IDE.
+" * 9. The Trinity plugin manages Source Explorer, Taglist and NERD Tree, and
+"      build them as a great IDE.
 Plugin 'wesleyche/Trinity'
-" 10. Tagbar is a Vim plugin that provides an easy way to browse the tags of
-"     the current file and get an overview of its structure
+" * 10. Tagbar is a Vim plugin that provides an easy way to browse the tags of
+"       the current file and get an overview of its structure
 Plugin 'majutsushi/tagbar'
-" 11. A Vim plugin which shows a git diff in the 'gutter' (sign column).
+" * 11. A Vim plugin which shows a git diff in the 'gutter' (sign column).
 Plugin 'airblade/vim-gitgutter'
-" 12. Open file and go to line via ':' symbol, e.g. file.txt:123
+" * 12. Open file and go to line via ':' symbol, e.g. file.txt:123
 "Bundle 'bogado/file-line'
-" 13. fzf on vim
+" * 13. fzf on vim
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-" 14. ack on vim
+" * 14. ack on vim
 "Plugin 'mileszs/ack.vim'
-" 15. file-line
+" * 15. file-line
 Plugin 'bogado/file-line'
 
-" (TBD) 16. vimagit
+" * 16. vimagit
 Plugin 'jreybert/vimagit'
 
-" 17. tig
+" * 17. tig
 Plugin 'iberianpig/tig-explorer.vim'
 
-" 18. Syntastic
+" * 18. Syntastic
 "Plugin 'vim-syntastic/syntastic'
 
-" 19. Youcompeleteme
+" * 19. Youcompeleteme
 Plugin 'Valloric/YouCompleteMe'
 
-"-------------------------------------------------------------------
-" Vim Color
-"-------------------------------------------------------------------
+"---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
-" 1. Install color scheme via vundle, like it:
+" * 1. Install color scheme via vundle, like it:
 Plugin 'sts10/vim-pink-moon'
 Plugin 'koirand/tokyo-metro.vim'
 Plugin 'srcery-colors/srcery-vim'
-" 2. Add colorscheme after Run vundle, like it:
+" * 2. Add colorscheme after Run vundle, like it:
 " colorscheme pink-moon
 
 
-" plugin from http://vim-scripts.org/vim/scripts.html
+" * plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
+" * Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" * git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" * The sparkup vim script is in a subdirectory of this repo called vim.
+" * Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" * Install L9 and avoid a Naming conflict if you've already installed a
+" * different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-"====================================================================
-"" Run vundle
-"====================================================================
-
-" All of your Plugins must be added before the following line
+"---- 1.3  Run vundle ---------------------------------------------------------
+" * All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
+" * To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
-" Brief help
+" * Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" * see :h vundle for more details or wiki for FAQ
+" * Put your non-Plugin stuff after this line
 
-"====================================================================
-" Set general vim property
+"==== END: Vundle config ======================================================
+
+"==== 2. General_Config =======================================================
+" * Set general vim property
 " n: Normal mode
 " v: Visual mode
 " i: Insert mode
 " c: Command-line mode
 " a: All mode
-"====================================================================
+"---- 2.1 Default -------------------------------------------------------------
 syntax on
 set clipboard=unnamed
-set hls
-set incsearch
-set hlsearch
+set hls                 " hightlight search
+set incsearch           " search realtime
 set cursorline
+set nu                  " Lile number
+" * Indent:
+" 	- autoindent: Eveny line will refer to before line
+" 	- smartindent: If detect ')' and '}', it won't not auto indent
+" 	- cindent: for c and java
+set cindent
+" * Tabs
+set ts=4
+set tabstop=4
+" * Tab settings: It use 4 space replace tab
+"set shiftwidth=4
+"set expandtab
 
-"=====================================================================
-" General VIM configuration
-"=====================================================================
-" Mouse mode: default set disable
+" * Load color scheme
+set t_Co=256
+set timeoutlen=200
+" * fold method :help fold-marker ---------------------------------------------
+set foldmethod=marker
+set foldmarker={,}
+set nofoldenable
+set ls=2
+set fileencoding=gb18030
+set fileencodings=ucs-bom,gb18030,utf-8,default
+" * Recommend use it if usually paste function --------------------------------
+set paste
+set modifiable
+" * Mouse mode: default set disable -------------------------------------------
 set mouse-=a
-" Mouse mode: Toggle hotkey
+" * Set background color at colum 80 ------------------------------------------
+set colorcolumn=80
+" * Show tabs -----------------------------------------------------------------
+set listchars=tab:\|.
+" * Show symbol ---------------------------------------------------------------
+set list
+set cursorline! cursorcolumn!
+
+" ---- 2.2 Keybind ------------------------------------------------------------
+" * Mouse mode: Toggle hotkey -------------------------------------------------
 nnoremap <silent> <C-x> :call ToggleMouse() <CR>
-
-" Undo
-"nnoremap <silent> <C-z> u
-"inoremap <silent> <C-z> <Esc>ua<Left>
-"vnoremap <silent> <C-z> ua<Left>
-"Scrapbook, Copy to other termainal
-set clipboard=unnamed
-
-"== text movement operation ==
-""move cursor to the end
+" * Text movement operation ---------------------------------------------------
+" * Move cursor to the end ----------------------------------------------------
 nnoremap <silent> <End><End> <End>a
 nnoremap <silent> e <End>
 inoremap <silent> <C-e> <End>
-" move cursor to the home
+" * Move cursor to the home ---------------------------------------------------
 "nnoremap <silent> <Home><Home> <Home>a<Left>
-""nnoremap <silent> h <Home>
+"nnoremap <silent> h <Home>
 "inoremap <silent> <C-h> <Home>
-"enable enter in normal mode
+" * Enable enter in normal mode -----------------------------------------------
 "nnoremap <silent> <Enter><Enter> a<Left><CR>
-" enable backspace in normal mode
+" * Enable backspace in normal mode -------------------------------------------
 nnoremap <silent> <Backspace> a<Left><Backspace>
-"enable space in normal mode
-"nnoremap <silent> w<Space> a<Left><Space>
-""fast to file end
-"nnoremap <silent> bg Gzz
-" Keyword search: maps f to first keyword
+" * Keyword search: maps f to first keyword -----------------------------------
 nnoremap <silent> f *ggnzz
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
-"pageDown
-nnoremap <silent> B <PageUp>
-nnoremap <silent> b <PageDown>
-"== format file operation ==
-" toggle line number
-set nu
-nnoremap <silent> <C-n> :set invnumber<CR>
-inoremap <silent> <C-n> <Esc>:set invnumber<CR>
-"enable <tab> in normal mode
+" * PageDown ------------------------------------------------------------------
+"nnoremap <silent> B <PageUp>
+"nnoremap <silent> b <PageDown>
+" * Enable <tab> in normal mode -----------------------------------------------
 nnoremap <silent> <Tab> :><CR>
 nnoremap <silent> <S-Tab> :<<CR>
 inoremap <silent> <S-Tab> <Esc>:<<CR>a<Left>
 vnoremap <silent> <Tab> >
 vnoremap <silent> <S-Tab> <
-
-" auto
+" * Autocompletion for symbols ------------------------------------------------
 inoremap ( ()<Left>
 inoremap [ []<Left>
 "inoremap < <><Left>
 "inoremap { {<CR>}<Esc>ko
-"inoremap <C-w> /*<Space><Space>*/<Left><Left><Left>
-"noremap <C-w> i/*<Space><Space>*/<Left><Left><Left>
+" * Redo
+nnoremap <silent> <C-r> <Esc><C-r>a<Left>
+" * Exit window ---------------------------------------------------------------
+nnoremap <silent> <C-z> :q<CR>
 
-" indent:
-" 	- autoindent: Eveny line will refer to before line
-" 	- smartindent: If detect ')' and '}', it won't not auto indent
-" 	- cindent: for c and java
-set cindent
-
-" load color scheme
-set t_Co=256
-syntax on
-set hlsearch
-set timeoutlen=200
-
-" fold method
-" :help fold-marker
-set foldmethod=marker
-set foldmarker={,}
-set nofoldenable
-
-"expand tab in source code
-autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml set shiftwidth=4 | set expandtab
-"autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
-autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
-"autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
-
-"for taglist
-filetype on
-"for taglist
-let Tlist_Use_SingleClick = 1
-
-"for NERDTree
-let NERDTreeMouseMode = 3
-
-"for srcexpl
-let g:SrcExpl_jumpKey = "<ENTER>"
-
-set ls=2
-set fileencoding=gb18030
-set fileencodings=ucs-bom,gb18030,utf-8,default
-
-" Recommend use it if usually paste function
-set paste
-
-set modifiable
-
-"Description: Find keyword via vimgrep
+" * Description: Find keyword via vimgrep -------------------------------------
 "   This mapping uses <cword> to get the word under the cursor, and
 "   isearches for it in the current directory and all subdirectories, opening
 "   the quickfix window when done
 "map <F3> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
 nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
 
-" Set background color at colum 80
-set colorcolumn=80
+" * Qickfix toggle ------------------------------------------------------------
+" Quick: hotkey
+nmap <silent> <C-c> :QFix<CR>
 
-" Show tabs
-set listchars=tab:\|.
-" Show symbol
-set list
+" * Cscope Settings -----------------------------------------------------------
+"if has("cscope")
+"    set csto=0
+"    set cst
+"    set nocsverb
+" add any database in current directory
+"    if filereadable("cscope.out")
+"       cs add cscope.out
+"    else add database pointed to by environment
+"    elseif $CSCOPE_DB != ""
+"    cs add $CSCOPE_DB
+"    endif
+"    set csverb
+"endif
+
+nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
-"=====================================================================
-" VIM Plugin Settings
-"=====================================================================
+" ---- 2.3 Autocmd ------------------------------------------------------------
+" * Expand tab in source code -------------------------------------------------
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml set shiftwidth=4 | set expandtab
+"autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
+"autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
+
+" visual indent shift
+vnoremap < <gv
+vnoremap > >gv
+
+
+"==== 3. Plugin_Config ========================================================
+"---- 3.0 colorscheme ---------------------------------------------------------
 " Scheme: Set color scheme
 colorscheme koehler " Color for gvim
 "colorscheme pink-moon
@@ -264,15 +297,11 @@ colorscheme koehler " Color for gvim
 "let g:srcery_inverse_match_paren = 0
 "let g:srcery_dim_lisp_paren = 0 
 "colorscheme srcery
-
-
-
 " Scheme: Set airline scheme
 let g:lightline = { 'colorscheme': 'pink-moon' }
 "let g:lightline = { 'colorscheme': 'srcery' }
 "let g:lightline = { 'colorscheme': 'tokyo-metro' }
 " Scheme: Other config
-
 "set cursorline              " Hight background at current cursor line
 hi CursorLine   cterm=NONE ctermbg=237 ctermfg=NONE guibg=darkred guifg=white
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -281,10 +310,7 @@ hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE guibg=darkred guifg=white
 "hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
-
-"====================================================================
-" Airline settings
-"====================================================================
+"---- 3.4 Airline settings ----------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -316,112 +342,47 @@ if !exists('g:airline_powerline_fonts')
   let g:airline_symbols.paste     = 'Þ'
   let g:airline_symbols.paste     = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
-else
-"  let g:airline#extensions#tabline#left_sep = ''
-"  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-"  let g:airline_left_sep = ''
-"  let g:airline_left_alt_sep = ''
-"  let g:airline_right_sep = ''
-"  let g:airline_right_alt_sep = ''
-"  let g:airline_symbols.branch = ''
-"  let g:airline_symbols.readonly = ''
-"  let g:airline_symbols.linenr = ''
 endif
 set fileencoding=gb18030
 set fileencodings=ucs-bom,gb18030,utf-8,default
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 
-"====================================================================
-" Tagbar Settings
-"====================================================================
-" Open and close the tagbar separately
-nmap <F12> :TagbarToggle<CR>
+"---- 3.9 Trinity Settings ----------------------------------------------------
+" * Taglist
+filetype on
+let Tlist_Use_SingleClick = 1
+" * NERDTree
+let NERDTreeMouseMode = 3
+" * Srcexpl
+let g:SrcExpl_jumpKey = "<ENTER>"
 
-"====================================================================
-" Indent Settings
-"====================================================================
-" Tabs
-set ts=4
-set tabstop=4
-" - Tab settings: It use 4 space replace tab
-set shiftwidth=4
-set expandtab
-
-" visual indent shift
-vnoremap < <gv
-vnoremap > >gv
-
-"====================================================================
-" MISC Settings
-"====================================================================
-" Shared unamed regitered with primary selection
-set clipboard+=unnamed
-
-"====================================================================
-" Trinity Settings
-"====================================================================
-" Open and close all the three plugins on the same time
+" * Open and close all the three plugins on the same time
 nmap <F8>  :TrinityToggleAll<CR>
 
-" Open and close the Source Explorer separately
+" * Open and close the Source Explorer separately
 nmap <F10>  :TrinityToggleSourceExplorer<CR>
 
-" Open and close the Taglist separately
+" * Open and close the Taglist separately
 nmap <F9> :TrinityToggleTagList<CR>
 
-" Open and close the NERD Tree separately
+" * Open and close the NERD Tree separately
 nmap <F11> :TrinityToggleNERDTree<CR>
 
-" YouCompeleteMe python config
-"let g:ycm_global_ycm_extra_conf = '/home/thl/.vim/ycm_extra_conf'
+"---- 3.10 Tagbar Settings -----------------------------------------------------
+" * Open and close the tagbar separately
+nmap <F12> :TagbarToggle<CR>
 
-
-"====================================================================
-" GitGutter
-"====================================================================
-
-" GitGutter
+"---- 3.11 gitgutter ----------------------------------------------------------
 let g:gitgutter_enable = 1
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
-"====================================================================
-" Cscope Settings
-"====================================================================
-" Cscope settings
-"if has("cscope")
-"    set csto=0
-"    set cst
-"    set nocsverb
-" add any database in current directory
-"    if filereadable("cscope.out")
-"       cs add cscope.out
-"    else add database pointed to by environment
-"    elseif $CSCOPE_DB != ""
-"    cs add $CSCOPE_DB
-"    endif
-"    set csverb
-"endif
-
-nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-Space>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
-
-"=====================================================================
-" FZF(Experiment)
-"=====================================================================
-" Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+"---- 3.12 fzf/fzf.vim ---------------------------------------------------------
+" * Enable per-command history.
+" * CTRL-N and CTRL-P will be automatically bound to next-history and
+" * previous-history instead of down and up. If you don't like the change,
+" * explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 command! -bang Colors
@@ -445,38 +406,93 @@ command! -bang -nargs=* Ag
 "  \                 fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:50%'),
 "  \                 <bang>0)
 
-" [Buffers] Jump to the existing window if possible
+" * [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
-" [[B]Commits] Customize the options used by 'git log':
+" * [[B]Commits] Customize the options used by 'git log':
 "let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h %ce %s %d %C(black)%C(bold)%cr"'
 
-" [Tags] Command to generate tags file
+" * [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R'
 
-" [Commands] --expect expression for directly executing the command
+" * [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
-" Mapping selecting mappings
+" * Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
-" Insert mode completion
+" * Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" Advanced customization using autoload functions
+" * Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 map <F4> :Buffer<CR>
 
-"=====================================================================
-" Qickfix toggle(Experiment)
-"=====================================================================
+"---- 3.16 tig-explorer -------------------------------------------------------
+let mapleader = ","
+" * open tig with current file
+nnoremap <Leader>T :TigOpenCurrentFile<CR>
+
+" * open tig with Project root path
+nnoremap <Leader>t :TigOpenProjectRootDir<CR>
+
+" * open tig grep
+nnoremap <Leader>g :TigGrep<CR>
+
+" * resume from last grep
+nnoremap <Leader>r :TigGrepResume<CR>
+
+" * open tig grep with the selected word
+vnoremap <Leader>g y:TigGrep<Space><C-R>"<CR>
+
+" * open tig grep with the word under the cursor
+nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
+
+" * open tig blame with current file
+nnoremap <Leader>b :TigBlame<CR>
+
+"---- 3.18 YouCompleteMe ------------------------------------------------------
+"let g:ycm_use_clangd = "Always"
+"let g:ycm_clangd_binary_path = "/home/henry/ycm_temp/llvm_root_dir"
+let g:syntastic_java_checkers = []
+
+let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'nerdtree' : 1,
+      \}
+
+
+"==== 4. Function =============================================================
+"---- 4.1 Mouse toggle --------------------------------------------------------
+function! ToggleMouse()
+    " check if mouse is enabled
+    if &mouse == 'a'
+        " disable mouse
+        set mouse=
+    else
+        " enable mouse everywhere
+        set mouse=a
+    endif
+endfunc
+
+" <TBD>
+"nmap <silent> <C-c> \` :QFix<CR>
+"nnoremap <silent> <C-o> :copen <CR>
+"nnoremap <silent> <C-c> :cclose <CR>
+
+"---- 4.2 QuickFix toggle -----------------------------------------------------
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
   if exists("g:qfix_win") && a:forced == 0
@@ -487,38 +503,31 @@ function! QFixToggle(forced)
     let g:qfix_win = bufnr("$")
   endif
 endfunction
+"==== END 4. Function =========================================================
 
-" Quick: hotkey
-nmap <silent> <C-c> :QFix<CR>
+"==== 5. Bug workaround =======================================================
+" workaround for https://github.com/vim/vim/issues/1start671
+if has("unix")
+  let s:uname = system("echo -n \"$(uname)\"")
+  if !v:shell_error && s:uname == "Linux"
+    set t_BE=
+  endif
+endif
+"==== END 5. Bug workaround ===================================================
 
-"=====================================================================
-" 17. tig config
-"=====================================================================
-let mapleader = ","
-" open tig with current file
-nnoremap <Leader>T :TigOpenCurrentFile<CR>
+"==== 6. Appendix =============================================================
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+" Not used configuration
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+" IndentLinesToggle Setting
+" Toggle cope mode
+"nnoremap <silent> <C-p> :IndentLinesToggle<CR>
+"nnoremap <silent> <C-x> :call ToggleCopyMode() <CR>
+"function! ToogleCopyMode()
+"    :IndentLinesToggle
+"endfunc
 
-" open tig with Project root path
-nnoremap <Leader>t :TigOpenProjectRootDir<CR>
-
-" open tig grep
-nnoremap <Leader>g :TigGrep<CR>
-
-" resume from last grep
-nnoremap <Leader>r :TigGrepResume<CR>
-
-" open tig grep with the selected word
-vnoremap <Leader>g y:TigGrep<Space><C-R>"<CR>
-
-" open tig grep with the word under the cursor
-nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
-
-" open tig blame with current file
-nnoremap <Leader>b :TigBlame<CR>
-
-"=====================================================================
-"-- Syntastic
-"=====================================================================
+"---- 3.10 Syntastic ----------------------------------------------------------
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
@@ -538,76 +547,7 @@ nnoremap <Leader>b :TigBlame<CR>
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 1
 "map <F2> :SyntasticToggleMode<CR>
-
-"=====================================================================
-" Youcompelete
-"=====================================================================
-"let g:ycm_use_clangd = "Always"
-"let g:ycm_clangd_binary_path = "/home/henry/ycm_temp/llvm_root_dir"
-let g:syntastic_java_checkers = []
-
-let g:ycm_collect_identifiers_from_tags_files=1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'nerdtree' : 1,
-      \}
-
-
-"=====================================================================
-" Function Experiment
-"=====================================================================
-function! ToggleMouse()
-    " check if mouse is enabled
-    if &mouse == 'a'
-        " disable mouse
-        set mouse=
-    else
-        " enable mouse everywhere
-        set mouse=a
-    endif
-endfunc
-
-" <TBD>
-"nmap <silent> <C-c> \` :QFix<CR>
-"nnoremap <silent> <C-o> :copen <CR>
-"nnoremap <silent> <C-c> :cclose <CR>
-
-"====================================================================
-" IndentLinesToggle Setting
-"====================================================================
-" Toggle cope mode
-"nnoremap <silent> <C-p> :IndentLinesToggle<CR>
-"nnoremap <silent> <C-x> :call ToggleCopyMode() <CR>
-"function! ToogleCopyMode()
-"    :IndentLinesToggle
-"endfunc
-
-
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-"@ Bug workaround
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-" workaround for https://github.com/vim/vim/issues/1start671
-if has("unix")
-  let s:uname = system("echo -n \"$(uname)\"")
-  if !v:shell_error && s:uname == "Linux"
-    set t_BE=
-  endif
-endif
-
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-"@ Appendix                                                          @
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-"=====================================================================
-" Not used configuration
-"=====================================================================
-" < Other hotkey >
-"redo
-nnoremap <silent> <C-r> <Esc><C-r>a<Left>
-
+"---- END ---------------------------------------------------------------------
 
 " < file navigate operation >
 ""switch buffer
@@ -622,7 +562,6 @@ nnoremap <silent> <C-r> <Esc><C-r>a<Left>
 "nnoremap <silent> <C-s> :w<CR>
 ""inoremap <silent> <C-s> <Esc>:w<CR>
 "exit file without save
-nnoremap <silent> <C-z> :q<CR>
 "inoremap <silent> <C-q> <Esc>:Bclose!<CR>
 ""exit vi and discard all change
 "nnoremap <silent> <F2> :ExitAll<CR>
