@@ -238,6 +238,8 @@ nnoremap <silent> <C-z> :q<CR>
 "   isearches for it in the current directory and all subdirectories, opening
 "   the quickfix window when done
 "map <F3> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
+
+map <F3> :vimgrep /\c/ %
 nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
 
 " * Qickfix toggle ------------------------------------------------------------
@@ -375,8 +377,8 @@ nmap <F12> :TagbarToggle<CR>
 
 "---- 3.11 gitgutter ----------------------------------------------------------
 let g:gitgutter_enable = 1
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap <leader>] <plug>GitGutterNextHunk
+nmap <leader>[ <plug>GitGutterPrevHunk
 
 "---- 3.12 fzf/fzf.vim ---------------------------------------------------------
 " * Enable per-command history.
