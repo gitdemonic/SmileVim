@@ -19,11 +19,14 @@
 "		3.11	airblade/vim-gitgutter +++
 "		3.12	junegunn/fzf +++
 "		3.13	junegunn/fzf.vim +++
-"		3.14	bogado/file-line
-"		3.15	jreybert/vimagit
-"		3.16	iberianpig/tig-explorer.vim +++
-"		3.17	(Unused) vim-syntastic/syntastic
-"		3.18	Valloric/YouCompleteMe +++
+"		3.14	(Unused)mileszs/ack.vim
+"		3.15	bogado/file-line
+"		3.16	jreybert/vimagit
+"		3.17	iberianpig/tig-explorer.vim +++
+"		3.18	(Unused) vim-syntastic/syntastic
+"		3.19	Valloric/YouCompleteMe +++
+"		3.20	SirVer/ultisnips
+"		3.21	honza/vim-snippets
 "		3.30	(Color) sts10/vim-pink-moon
 "		3.31	(Color) koirand/tokyo-metro.vim
 "		3.32	(Color) srcery-colors/srcery-vim
@@ -104,6 +107,12 @@ Plugin 'iberianpig/tig-explorer.vim'
 " * 19. Youcompeleteme
 Plugin 'Valloric/YouCompleteMe'
 
+" * 20. Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" * 21. Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
 " * 1. Install color scheme via vundle, like it:
@@ -182,7 +191,7 @@ set ls=2
 set fileencoding=gb18030
 set fileencodings=ucs-bom,gb18030,utf-8,default
 " * Recommend use it if usually paste function --------------------------------
-set paste
+"set paste
 set modifiable
 " * Mouse mode: default set disable -------------------------------------------
 set mouse-=a
@@ -231,7 +240,7 @@ inoremap [ []<Left>
 " * Redo
 nnoremap <silent> <C-r> <Esc><C-r>a<Left>
 " * Exit window ---------------------------------------------------------------
-nnoremap <silent> <C-z> :q<CR>
+"nnoremap <silent> <C-z> :q<CR>
 
 " * Description: Find keyword via vimgrep -------------------------------------
 "   This mapping uses <cword> to get the word under the cursor, and
@@ -385,6 +394,20 @@ nmap <leader>[ <plug>GitGutterPrevHunk
 " * CTRL-N and CTRL-P will be automatically bound to next-history and
 " * previous-history instead of down and up. If you don't like the change,
 " * explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 command! -bang Colors
@@ -440,6 +463,16 @@ nnoremap <leader>c :Command<CR>
 nnoremap <leader>l :execute "Line " . expand("<cword>") <Bar> cw<CR>
 nnoremap <leader>h :Hist
 
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
 "---- 3.16 tig-explorer -------------------------------------------------------
 let mapleader = ","
 " * open tig with current file
@@ -463,7 +496,7 @@ nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
 " * open tig blame with current file
 nnoremap <Leader>b :TigBlame<CR>
 
-"---- 3.18 YouCompleteMe ------------------------------------------------------
+"---- 3.19 YouCompleteMe ------------------------------------------------------
 "let g:ycm_use_clangd = "Always"
 "let g:ycm_clangd_binary_path = "/home/henry/ycm_temp/llvm_root_dir"
 let g:syntastic_java_checkers = []
@@ -478,6 +511,20 @@ let g:ycm_filetype_blacklist = {
       \ 'nerdtree' : 1,
       \}
 
+"---- 3.20 ----------------
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" UltiSnips triggering
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 
 "==== 4. Function =============================================================
 "---- 4.1 Mouse toggle --------------------------------------------------------
