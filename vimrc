@@ -435,7 +435,10 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " * Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-map <F4> :Buffer<CR>
+nnoremap <leader>b :Buffer<CR>
+nnoremap <leader>c :Command<CR>
+nnoremap <leader>l :execute "Line " . expand("<cword>") <Bar> cw<CR>
+nnoremap <leader>h :Hist
 
 "---- 3.16 tig-explorer -------------------------------------------------------
 let mapleader = ","
