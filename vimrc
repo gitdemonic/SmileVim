@@ -233,14 +233,14 @@ inoremap <silent> <S-Tab> <Esc>:<<CR>a<Left>
 vnoremap <silent> <Tab> >
 vnoremap <silent> <S-Tab> <
 " * Autocompletion for symbols ------------------------------------------------
-inoremap ( ()<Left>
-inoremap [ []<Left>
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
 "inoremap < <><Left>
 "inoremap { {<CR>}<Esc>ko
 " * Redo
 nnoremap <silent> <C-r> <Esc><C-r>a<Left>
 " * Exit window ---------------------------------------------------------------
-"nnoremap <silent> <C-z> :q<CR>
+nnoremap <silent> <C-z> :q<CR>
 
 " * Description: Find keyword via vimgrep -------------------------------------
 "   This mapping uses <cword> to get the word under the cursor, and
