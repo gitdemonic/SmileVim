@@ -27,6 +27,10 @@
 "		3.19	Valloric/YouCompleteMe +++
 "		3.20	SirVer/ultisnips
 "		3.21	honza/vim-snippets
+"		3.22	haya14busa/incsearch.vim
+"		3.23	itchyny/vim-cursorword
+"		3.24	henrik/vim-indexed-search
+"		3.25	terryma/vim-multiple-cursors
 "		3.30	(Color) sts10/vim-pink-moon
 "		3.31	(Color) koirand/tokyo-metro.vim
 "		3.32	(Color) srcery-colors/srcery-vim
@@ -112,6 +116,18 @@ Plugin 'SirVer/ultisnips'
 
 " * 21. Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+
+" * 22. incsearch
+Plugin 'haya14busa/incsearch.vim'
+
+" * 23. itchyny/vim-cursorword
+Plugin 'itchyny/vim-cursorword'
+
+" * 24 henrik/vim-indexed-search
+Plugin 'henrik/vim-indexed-search'
+
+" * 25 terryma/vim-multiple-cursors
+Plugin 'terryma/vim-multiple-cursors'
 
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
@@ -221,8 +237,8 @@ inoremap <silent> <C-e> <End>
 nnoremap <silent> <Backspace> a<Left><Backspace>
 " * Keyword search: maps f to first keyword -----------------------------------
 nnoremap <silent> f *ggnzz
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
+nnoremap <silent> ] :cnext<CR>
+nnoremap <silent> [ :cNext<CR>
 " * PageDown ------------------------------------------------------------------
 "nnoremap <silent> B <PageUp>
 "nnoremap <silent> b <PageDown>
@@ -249,6 +265,7 @@ nnoremap <silent> <C-z> :q<CR>
 "map <F3> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
 
 map <F3> :vimgrep /\c/ %
+map <F4> :vimgrepadd /\c/ %
 nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
 
 " * Qickfix toggle ------------------------------------------------------------
@@ -511,6 +528,8 @@ let g:ycm_filetype_blacklist = {
       \ 'nerdtree' : 1,
       \}
 
+let g:ycm_key_list_stop_completion = [ '<C-y>', '<Enter>' ]
+
 "---- 3.20 ----------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " UltiSnips triggering
@@ -522,6 +541,46 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+"---- 3.22 incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+"set hlsearch
+let g:incsearch#no_inc_hlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+let g:incsearch#highlight = {
+		\   'match' : {
+		\     'group' : 'IncSearchUnderline',
+		\     'priority' : '10'
+		\   },
+		\   'on_cursor' : {
+		\     'priority' : '100'
+		\   },
+		\   'cursor' : {
+		\     'group' : 'ErrorMsg',
+		\     'priority' : '1000'
+		\   }
+		\ }
+
+"--- 25 terryma/vim-multiple-cursors
+let g:multi_cursor_use_default_mapping=0
+"
+"" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
 
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"

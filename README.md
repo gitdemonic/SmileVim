@@ -52,6 +52,6 @@ I hope it can replace grep, find command
 ## To-Do
 - [ ] How to install and use FZF
 - [X] Plugin base config
-- [ ] FZF in vim
+- [X] FZF in vim
 - [X] Improve fzf_Vim_Open.sh: Back to fzf window when close vim
 - [ ] Improve fzf_Vim_Open.sh: show last keyword
