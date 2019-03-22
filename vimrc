@@ -179,7 +179,9 @@ filetype plugin indent on    " required
 " a: All mode
 "---- 2.1 Default -------------------------------------------------------------
 syntax on
-set clipboard=unnamed
+" Set it to unnamed to use * (PRIMARY, on select)
+" Set it to unnamedplus to use + (CLIPBOARD, ^C)
+set clipboard=unnamedplus
 set hls                 " hightlight search
 set incsearch           " search realtime
 set cursorline
@@ -222,6 +224,7 @@ set cursorline! cursorcolumn!
 " ---- 2.2 Keybind ------------------------------------------------------------
 " * Mouse mode: Toggle hotkey -------------------------------------------------
 nnoremap <silent> <C-x> :call ToggleMouse() <CR>
+vnoremap <silent> <RightMouse> y
 " * Text movement operation ---------------------------------------------------
 " * Move cursor to the end ----------------------------------------------------
 nnoremap <silent> <End><End> <End>a
@@ -303,6 +306,7 @@ autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml set shiftwidth=4 | set exp
 "autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
 autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
+"autocmd BufRead,BufNewFile *.dts,*.dtsi set filetype=dts
 
 " visual indent shift
 vnoremap < <gv

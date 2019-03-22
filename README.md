@@ -34,6 +34,15 @@
         $ cd ~/.vim/bundle/YouCompleteMe
         $ python3 install.py --clang-completer --java-completer 
    ```
+5. Other config:
+   ```
+   A.1 Enable yank to systen clipboard on visual
+      $ sudo apt-get install vim-gnome -y
+   A.2 Config your vimrc():
+      +++ " Set it to unnamed to use * (PRIMARY, on select)
+      +++ " Set it to unnamedplus to use + (CLIPBOARD, ^C)
+      +++ set clipboard=unnamedplus
+   ```
 
 ## Other script
 1. [fvf](https://github.com/gitdemonic/SmileVim/tree/master/script/fzf) is powerful search tool, I upload some script for git log, find file, and search keywork,
