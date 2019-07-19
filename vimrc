@@ -209,7 +209,7 @@ set ls=2
 set fileencoding=gb18030
 set fileencodings=ucs-bom,gb18030,utf-8,default
 " * Recommend use it if usually paste function --------------------------------
-"set paste
+set paste
 set modifiable
 " * Mouse mode: default set disable -------------------------------------------
 set mouse-=a
@@ -381,6 +381,7 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 
 "---- 3.9 Trinity Settings ----------------------------------------------------
+let mapleader = ","
 " * Taglist
 filetype on
 let Tlist_Use_SingleClick = 1
@@ -393,7 +394,7 @@ let g:SrcExpl_jumpKey = "<ENTER>"
 nmap <F8>  :TrinityToggleAll<CR>
 
 " * Open and close the Source Explorer separately
-nmap <F10>  :TrinityToggleSourceExplorer<CR>
+nnoremap <leader>m :TrinityToggleSourceExplorer<CR>
 
 " * Open and close the Taglist separately
 nmap <F9> :TrinityToggleTagList<CR>
@@ -406,6 +407,7 @@ nmap <F11> :TrinityToggleNERDTree<CR>
 nmap <F12> :TagbarToggle<CR>
 
 "---- 3.11 gitgutter ----------------------------------------------------------
+let mapleader = '\'
 let g:gitgutter_enable = 1
 nmap <leader>] <plug>GitGutterNextHunk
 nmap <leader>[ <plug>GitGutterPrevHunk
@@ -479,10 +481,11 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " * Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
+let mapleader = "."
 nnoremap <leader>b :Buffer<CR>
 nnoremap <leader>c :Command<CR>
 nnoremap <leader>l :execute "Line " . expand("<cword>") <Bar> cw<CR>
-nnoremap <leader>h :Hist
+nnoremap <leader>h :Hist:
 
 function! s:fzf_statusline()
   " Override statusline as you like
