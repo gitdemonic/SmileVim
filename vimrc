@@ -31,6 +31,7 @@
 "		3.23	itchyny/vim-cursorword
 "		3.24	henrik/vim-indexed-search
 "		3.25	terryma/vim-multiple-cursors
+"		3.26	t9md/vim-quickhl
 "		3.30	(Color) sts10/vim-pink-moon
 "		3.31	(Color) koirand/tokyo-metro.vim
 "		3.32	(Color) srcery-colors/srcery-vim
@@ -128,6 +129,9 @@ Plugin 'henrik/vim-indexed-search'
 
 " * 25 terryma/vim-multiple-cursors
 Plugin 'terryma/vim-multiple-cursors'
+
+" * 26 Quick hightlight for multi-color
+Plugin 't9md/vim-quickhl'
 
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
@@ -579,6 +583,22 @@ let g:incsearch#highlight = {
 "--- 25 terryma/vim-multiple-cursors
 let g:multi_cursor_use_default_mapping=0
 "
+"--- 26 t9md/vim-quickhl
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+
+nmap <Space>w <Plug>(quickhl-manual-this-whole-word)
+xmap <Space>w <Plug>(quickhl-manual-this-whole-word)
+
+nmap <Space>c <Plug>(quickhl-manual-clear)
+vmap <Space>c <Plug>(quickhl-manual-clear)
+
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+
+nmap <Space>j <Plug>(quickhl-cword-toggle)
+nmap <Space>] <Plug>(quickhl-tag-toggle)
+
 "" Default mapping
 let g:multi_cursor_start_word_key      = '<C-n>'
 let g:multi_cursor_select_all_word_key = '<A-n>'
