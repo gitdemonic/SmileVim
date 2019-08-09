@@ -110,7 +110,7 @@ Plugin 'iberianpig/tig-explorer.vim'
 "Plugin 'vim-syntastic/syntastic'
 
 " * 19. Youcompeleteme
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " * 20. Track the engine.
 Plugin 'SirVer/ultisnips'
@@ -132,6 +132,15 @@ Plugin 'terryma/vim-multiple-cursors'
 
 " * 26 Quick hightlight for multi-color
 Plugin 't9md/vim-quickhl'
+
+" * 27 2019 Autocompleter
+Plugin 'zxqfl/tabnine-vim'
+
+" * 28 nerdcommenter
+Plugin 'scrooloose/nerdcommenter'
+
+" * 29 easymotion/vim-easymotion
+Plugin 'easymotion/vim-easymotion'
 
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
@@ -274,6 +283,11 @@ nnoremap <silent> <C-z> :q<CR>
 map <F3> :vimgrep /\c/ %
 map <F4> :vimgrepadd /\c/ %
 nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
+
+" Git hotkey
+map <F1> :! git status <cr>
+map <F2> :! git diff % <cr>
+map <F3> :! tig % <cr>
 
 " * Qickfix toggle ------------------------------------------------------------
 " Quick: hotkey
@@ -525,6 +539,7 @@ nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
 nnoremap <Leader>b :TigBlame<CR>
 
 "---- 3.19 YouCompleteMe ------------------------------------------------------
+"---- 3.27 tabnine Settings ---------------------------------------------------
 "let g:ycm_use_clangd = "Always"
 "let g:ycm_clangd_binary_path = "/home/henry/ycm_temp/llvm_root_dir"
 let g:syntastic_java_checkers = []
@@ -609,8 +624,53 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+" * 28 nerdcommenter
+map c <Nop>
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
+
+" * 29 vim easymotion --------------------------------------------------------
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" Move to line
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "==== 4. Function =============================================================
 "---- 4.1 Mouse toggle --------------------------------------------------------
