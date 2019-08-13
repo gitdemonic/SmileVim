@@ -63,7 +63,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 " * 2. This plugin is used for displaying thin vertical lines at each
 "      indentation level for code indented with spaces.
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
 " * 3. This plugin causes all trailing whitespace characters
 Plugin 'ntpeters/vim-better-whitespace'
 " * 4. Lean & mean status/tabline for vim that's light as air.
@@ -101,7 +101,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'bogado/file-line'
 
 " * 16. vimagit
-Plugin 'jreybert/vimagit'
+"Plugin 'jreybert/vimagit'
 
 " * 17. tig
 Plugin 'iberianpig/tig-explorer.vim'
@@ -286,8 +286,8 @@ nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> 
 
 " Git hotkey
 map <F1> :! git status <cr>
-map <F2> :! git diff % <cr>
-map <F3> :! tig % <cr>
+"map <F2> :! git diff % <cr>
+map <F2> :! tig % <cr>
 
 " * Qickfix toggle ------------------------------------------------------------
 " Quick: hotkey
