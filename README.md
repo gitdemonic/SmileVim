@@ -59,8 +59,9 @@ I hope it can replace grep, find command
 4. [vim-pink-moon](https://github.com/sts10/vim-pink-moon)
 
 ## To-Do
-- [ ] How to install and use FZF
+- [X] How to install and use FZF
 - [X] Plugin base config
 - [X] FZF in vim
 - [X] Improve fzf_Vim_Open.sh: Back to fzf window when close vim
-- [ ] Improve fzf_Vim_Open.sh: show last keyword
+- [X] Improve fzf_Vim_Open.sh: show last keyword
+- [ ] Add hotkey cheat sheet to README.md or gitbook(?)

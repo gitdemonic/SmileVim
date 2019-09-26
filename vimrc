@@ -46,140 +46,104 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" * set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" * alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" * let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
+call plug#begin('~/.vim/plugged')
 "---- 1.1. Plugins ------------------------------------------------------------
 " * Write your plugins here
-" * The following are examples of different formats supported.
-" * Keep Plugin commands between vundle#begin/end.
 " * 1. plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 " * 2. This plugin is used for displaying thin vertical lines at each
 "      indentation level for code indented with spaces.
-"Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " * 3. This plugin causes all trailing whitespace characters
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 " * 4. Lean & mean status/tabline for vim that's light as air.
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " * 5. This file contains some boilerplate settings for vim's cscope interface,
 "      plus some keyboard mappings that I've found useful.
 "Plugin 'chazy/cscope_maps'
 " * 6. The "Tag List" plugin is a source code browser for the Vim editor.
-Plugin 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/taglist.vim'
 " * 7. The NERDTree is a file system explorer for the Vim editor. Using this
 "      plugin, users can visually browse complex directory hierarchies, quickly
 "      open files for reading or editing, and perform basic file system operations.
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " * 8. SrcExpl (Source Explorer) is a source code explorer that provides context
 "      for the currently selected keyword by displaying the function or type
 "      definition or declaration in a separate window
-Plugin 'wesleyche/SrcExpl'
+Plug 'wesleyche/SrcExpl'
 " * 9. The Trinity plugin manages Source Explorer, Taglist and NERD Tree, and
 "      build them as a great IDE.
-Plugin 'wesleyche/Trinity'
+Plug 'wesleyche/Trinity'
 " * 10. Tagbar is a Vim plugin that provides an easy way to browse the tags of
 "       the current file and get an overview of its structure
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " * 11. A Vim plugin which shows a git diff in the 'gutter' (sign column).
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " * 12. Open file and go to line via ':' symbol, e.g. file.txt:123
 "Bundle 'bogado/file-line'
 " * 13. fzf on vim
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " * 14. ack on vim
-"Plugin 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 " * 15. file-line
-Plugin 'bogado/file-line'
+Plug 'bogado/file-line'
 
 " * 16. vimagit
-"Plugin 'jreybert/vimagit'
+"Plug 'jreybert/vimagit'
 
 " * 17. tig
-Plugin 'iberianpig/tig-explorer.vim'
+Plug 'iberianpig/tig-explorer.vim'
 
 " * 18. Syntastic
-"Plugin 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 " * 19. Youcompeleteme
-"Plugin 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 
 " * 20. Track the engine.
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " * 21. Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " * 22. incsearch
-Plugin 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 
 " * 23. itchyny/vim-cursorword
-Plugin 'itchyny/vim-cursorword'
+Plug 'itchyny/vim-cursorword'
 
 " * 24 henrik/vim-indexed-search
-Plugin 'henrik/vim-indexed-search'
+Plug 'henrik/vim-indexed-search'
 
 " * 25 terryma/vim-multiple-cursors
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " * 26 Quick hightlight for multi-color
-Plugin 't9md/vim-quickhl'
+Plug 't9md/vim-quickhl'
 
 " * 27 2019 Autocompleter
-Plugin 'zxqfl/tabnine-vim'
+Plug 'zxqfl/tabnine-vim'
 
 " * 28 nerdcommenter
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " * 29 easymotion/vim-easymotion
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
+
+" * 30 ryanoasis/vim-devicons
+"Plug 'ryanoasis/vim-devicons'
 
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
 " * 1. Install color scheme via vundle, like it:
-Plugin 'sts10/vim-pink-moon'
-Plugin 'koirand/tokyo-metro.vim'
-Plugin 'srcery-colors/srcery-vim'
+Plug 'sts10/vim-pink-moon'
+Plug 'koirand/tokyo-metro.vim'
+Plug 'srcery-colors/srcery-vim'
 " * 2. Add colorscheme after Run vundle, like it:
 " colorscheme pink-moon
-
-
-" * plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" * Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" * git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" * The sparkup vim script is in a subdirectory of this repo called vim.
-" * Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" * Install L9 and avoid a Naming conflict if you've already installed a
-" * different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-"---- 1.3  Run vundle ---------------------------------------------------------
-" * All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" * To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" * Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" * see :h vundle for more details or wiki for FAQ
-" * Put your non-Plugin stuff after this line
+call plug#end()
 
 "==== END: Vundle config ======================================================
 
@@ -214,6 +178,7 @@ set tabstop=4
 " * Load color scheme
 set t_Co=256
 set timeoutlen=200
+set encoding=UTF-8
 " * fold method :help fold-marker ---------------------------------------------
 set foldmethod=marker
 set foldmarker={,}
@@ -233,6 +198,8 @@ set listchars=tab:\|.
 " * Show symbol ---------------------------------------------------------------
 set list
 set cursorline! cursorcolumn!
+
+set term=xterm-256color
 
 " ---- 2.2 Keybind ------------------------------------------------------------
 " * Mouse mode: Toggle hotkey -------------------------------------------------
@@ -360,6 +327,9 @@ hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE guibg=darkred guifg=white
 "hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
+"---- 3.2 Yggdroot/indentLine
+let g:indentLine_setColors = 0
+
 "---- 3.4 Airline settings ----------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -427,8 +397,8 @@ nmap <F12> :TagbarToggle<CR>
 "---- 3.11 gitgutter ----------------------------------------------------------
 let mapleader = '\'
 let g:gitgutter_enable = 1
-nmap <leader>] <plug>GitGutterNextHunk
-nmap <leader>[ <plug>GitGutterPrevHunk
+nmap <leader>] <plug>(GitGutterNextHunk)
+nmap <leader>[ <plug>(GitGutterPrevHunk)
 
 "---- 3.12 fzf/fzf.vim ---------------------------------------------------------
 " * Enable per-command history.
