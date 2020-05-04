@@ -287,7 +287,7 @@ nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 " ---- 2.3 Autocmd ------------------------------------------------------------
 " * Expand tab in source code -------------------------------------------------
-autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt set shiftwidth=4 | set expandtab
 "autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
 autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
@@ -681,6 +681,10 @@ if has("unix")
     set t_BE=
   endif
 endif
+
+if has("patch-8.1.0360")
+  set diffopt+=internal,algorithm:patience,indent-heuristic
+endif
 "==== END 5. Bug workaround ===================================================
 
 "==== 6. Appendix =============================================================
@@ -743,3 +747,6 @@ autocmd User VimagitUpdateFile
     \ if ( exists("*gitgutter#process_buffer") ) |
     \   call gitgutter#process_buffer(bufnr(g:magit_last_updated_buffer), 0) |
     \ endif
+
+" history workaround
+rv!

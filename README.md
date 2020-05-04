@@ -65,3 +65,10 @@ I hope it can replace grep, find command
 - [X] Improve fzf_Vim_Open.sh: Back to fzf window when close vim
 - [X] Improve fzf_Vim_Open.sh: show last keyword
 - [ ] Add hotkey cheat sheet to README.md or gitbook(?)
+
+## Workaround
+1. [Tig] tig loading too long?
+> Add these codes to your .git/config or ~/.gitconfig
+[tig] main-view = line-number:no,interval=5 id:no date:default author:full,width=20 commit-title:yes,refs,overflow=no
+[tig] show-changes = false
+
