@@ -46,104 +46,122 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-call plug#begin('~/.vim/plugged')
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 "---- 1.1. Plugins ------------------------------------------------------------
 " * Write your plugins here
 " * 1. plugin on GitHub repo
 "Plug 'tpope/vim-fugitive'
 " * 2. This plugin is used for displaying thin vertical lines at each
 "      indentation level for code indented with spaces.
-Plug 'Yggdroot/indentLine'
+Plugin 'Yggdroot/indentLine'
 " * 3. This plugin causes all trailing whitespace characters
-Plug 'ntpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 " * 4. Lean & mean status/tabline for vim that's light as air.
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " * 5. This file contains some boilerplate settings for vim's cscope interface,
 "      plus some keyboard mappings that I've found useful.
 "Plugin 'chazy/cscope_maps'
 " * 6. The "Tag List" plugin is a source code browser for the Vim editor.
-Plug 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/taglist.vim'
 " * 7. The NERDTree is a file system explorer for the Vim editor. Using this
 "      plugin, users can visually browse complex directory hierarchies, quickly
 "      open files for reading or editing, and perform basic file system operations.
-Plug 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " * 8. SrcExpl (Source Explorer) is a source code explorer that provides context
 "      for the currently selected keyword by displaying the function or type
 "      definition or declaration in a separate window
-Plug 'wesleyche/SrcExpl'
+Plugin 'wesleyche/SrcExpl'
 " * 9. The Trinity plugin manages Source Explorer, Taglist and NERD Tree, and
 "      build them as a great IDE.
-Plug 'wesleyche/Trinity'
+Plugin 'wesleyche/Trinity'
 " * 10. Tagbar is a Vim plugin that provides an easy way to browse the tags of
 "       the current file and get an overview of its structure
-Plug 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 " * 11. A Vim plugin which shows a git diff in the 'gutter' (sign column).
-Plug 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 " * 12. Open file and go to line via ':' symbol, e.g. file.txt:123
 "Bundle 'bogado/file-line'
 " * 13. fzf on vim
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " * 14. ack on vim
-"Plug 'mileszs/ack.vim'
+"Plugin 'mileszs/ack.vim'
 " * 15. file-line
-Plug 'bogado/file-line'
+Plugin 'bogado/file-line'
 
 " * 16. vimagit
-"Plug 'jreybert/vimagit'
+"Plugin 'jreybert/vimagit'
 
 " * 17. tig
-Plug 'iberianpig/tig-explorer.vim'
+Plugin 'iberianpig/tig-explorer.vim'
 
 " * 18. Syntastic
-"Plug 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 
 " * 19. Youcompeleteme
-"Plug 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " * 20. Track the engine.
-Plug 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 
 " * 21. Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 
 " * 22. incsearch
-Plug 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch.vim'
 
 " * 23. itchyny/vim-cursorword
-Plug 'itchyny/vim-cursorword'
+Plugin 'itchyny/vim-cursorword'
 
 " * 24 henrik/vim-indexed-search
-Plug 'henrik/vim-indexed-search'
+Plugin 'henrik/vim-indexed-search'
 
 " * 25 terryma/vim-multiple-cursors
-Plug 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 
 " * 26 Quick hightlight for multi-color
-Plug 't9md/vim-quickhl'
+Plugin 't9md/vim-quickhl'
 
 " * 27 2019 Autocompleter
-Plug 'zxqfl/tabnine-vim'
+Plugin 'zxqfl/tabnine-vim'
 
 " * 28 nerdcommenter
-Plug 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
 " * 29 easymotion/vim-easymotion
-Plug 'easymotion/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 
 " * 30 ryanoasis/vim-devicons
-"Plug 'ryanoasis/vim-devicons'
+"Plugin 'ryanoasis/vim-devicons'
 
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
 " * 1. Install color scheme via vundle, like it:
-Plug 'sts10/vim-pink-moon'
-Plug 'koirand/tokyo-metro.vim'
-Plug 'srcery-colors/srcery-vim'
-" * 2. Add colorscheme after Run vundle, like it:
-" colorscheme pink-moon
-call plug#end()
+Plugin 'sts10/vim-pink-moon'
+Plugin 'koirand/tokyo-metro.vim'
+Plugin 'srcery-colors/srcery-vim'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 "==== END: Vundle config ======================================================
 
