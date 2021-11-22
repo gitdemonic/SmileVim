@@ -6,7 +6,7 @@
 "		2.3		Autocmd
 " 3. Plugin_Config
 "		3.0		colorscheme +++
-"		3.1		tpope/vim-fugitive
+"		3.1		(Unused) tpope/vim-fugitive
 "		3.2		Yggdroot/indentLine
 "		3.3		ntpeters/vim-better-whitespace
 "		3.4		vim-airline/vim-airline +++
@@ -19,18 +19,18 @@
 "		3.11	airblade/vim-gitgutter +++
 "		3.12	junegunn/fzf +++
 "		3.13	junegunn/fzf.vim +++
-"		3.14	(Unused)mileszs/ack.vim
+"		3.14	(Unused) mileszs/ack.vim
 "		3.15	bogado/file-line
-"		3.16	jreybert/vimagit
+"		3.16	(Unused) jreybert/vimagit
 "		3.17	iberianpig/tig-explorer.vim +++
 "		3.18	(Unused) vim-syntastic/syntastic
-"		3.19	Valloric/YouCompleteMe +++
-"		3.20	SirVer/ultisnips
-"		3.21	honza/vim-snippets
+"		3.19	(Unused) Valloric/YouCompleteMe +++
+"		3.20	(Unused) SirVer/ultisnips
+"		3.21	(Unused) honza/vim-snippets
 "		3.22	haya14busa/incsearch.vim
 "		3.23	itchyny/vim-cursorword
-"		3.24	henrik/vim-indexed-search
-"		3.25	terryma/vim-multiple-cursors
+"		3.24	(Unused) henrik/vim-indexed-search
+"		3.25	(Unused) terryma/vim-multiple-cursors
 "		3.26	t9md/vim-quickhl
 "		3.30	(Color) sts10/vim-pink-moon
 "		3.31	(Color) koirand/tokyo-metro.vim
@@ -47,110 +47,114 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 "---- 1.1. Plugins ------------------------------------------------------------
 " * Write your plugins here
 " * 1. plugin on GitHub repo
 "Plug 'tpope/vim-fugitive'
 " * 2. This plugin is used for displaying thin vertical lines at each
 "      indentation level for code indented with spaces.
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " * 3. This plugin causes all trailing whitespace characters
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 " * 4. Lean & mean status/tabline for vim that's light as air.
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " * 5. This file contains some boilerplate settings for vim's cscope interface,
 "      plus some keyboard mappings that I've found useful.
-"Plugin 'chazy/cscope_maps'
+"Plug 'chazy/cscope_maps'
 " * 6. The "Tag List" plugin is a source code browser for the Vim editor.
-Plugin 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/taglist.vim'
 " * 7. The NERDTree is a file system explorer for the Vim editor. Using this
 "      plugin, users can visually browse complex directory hierarchies, quickly
 "      open files for reading or editing, and perform basic file system operations.
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " * 8. SrcExpl (Source Explorer) is a source code explorer that provides context
 "      for the currently selected keyword by displaying the function or type
 "      definition or declaration in a separate window
-Plugin 'wesleyche/SrcExpl'
+Plug 'wesleyche/SrcExpl'
 " * 9. The Trinity plugin manages Source Explorer, Taglist and NERD Tree, and
 "      build them as a great IDE.
-Plugin 'wesleyche/Trinity'
+Plug 'wesleyche/Trinity'
 " * 10. Tagbar is a Vim plugin that provides an easy way to browse the tags of
 "       the current file and get an overview of its structure
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " * 11. A Vim plugin which shows a git diff in the 'gutter' (sign column).
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " * 12. Open file and go to line via ':' symbol, e.g. file.txt:123
 "Bundle 'bogado/file-line'
 " * 13. fzf on vim
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " * 14. ack on vim
-"Plugin 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 " * 15. file-line
-Plugin 'bogado/file-line'
+Plug 'bogado/file-line'
 
 " * 16. vimagit
-"Plugin 'jreybert/vimagit'
+"Plug 'jreybert/vimagit'
 
 " * 17. tig
-Plugin 'iberianpig/tig-explorer.vim'
+Plug 'iberianpig/tig-explorer.vim'
 
 " * 18. Syntastic
-"Plugin 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 " * 19. Youcompeleteme
-"Plugin 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 
 " * 20. Track the engine.
-Plugin 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 " * 21. Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 
 " * 22. incsearch
-Plugin 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 
 " * 23. itchyny/vim-cursorword
-Plugin 'itchyny/vim-cursorword'
+Plug 'itchyny/vim-cursorword'
 
 " * 24 henrik/vim-indexed-search
-Plugin 'henrik/vim-indexed-search'
+"Plug 'henrik/vim-indexed-search'
 
 " * 25 terryma/vim-multiple-cursors
-Plugin 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 " * 26 Quick hightlight for multi-color
-Plugin 't9md/vim-quickhl'
+Plug 't9md/vim-quickhl'
 
 " * 27 2019 Autocompleter
-Plugin 'zxqfl/tabnine-vim'
+"Plug 'zxqfl/tabnine-vim'
+Plug 'codota/tabnine-vim'
+
 
 " * 28 nerdcommenter
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " * 29 easymotion/vim-easymotion
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " * 30 ryanoasis/vim-devicons
-"Plugin 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
 " * 1. Install color scheme via vundle, like it:
-Plugin 'sts10/vim-pink-moon'
-Plugin 'koirand/tokyo-metro.vim'
-Plugin 'srcery-colors/srcery-vim'
+"Plug 'sts10/vim-pink-moon'
+"Plug 'koirand/tokyo-metro.vim'
+Plug 'srcery-colors/srcery-vim'
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+"call vundle#end()            " required
+"filetype plugin indent on    " required
+call plug#end()
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -195,7 +199,7 @@ set tabstop=4
 
 " * Load color scheme
 set t_Co=256
-set timeoutlen=200
+"set timeoutlen=50
 set encoding=UTF-8
 " * fold method :help fold-marker ---------------------------------------------
 set foldmethod=marker
@@ -210,7 +214,7 @@ set modifiable
 " * Mouse mode: default set disable -------------------------------------------
 set mouse-=a
 " * Set background color at colum 80 ------------------------------------------
-set colorcolumn=80
+"set colorcolumn=80
 " * Show tabs -----------------------------------------------------------------
 set listchars=tab:\|.
 " * Show symbol ---------------------------------------------------------------
@@ -305,7 +309,7 @@ nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 " ---- 2.3 Autocmd ------------------------------------------------------------
 " * Expand tab in source code -------------------------------------------------
-autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt,*.sh set shiftwidth=4 | set expandtab
 "autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
 autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
@@ -343,6 +347,7 @@ hi CursorLine   cterm=NONE ctermbg=237 ctermfg=NONE guibg=darkred guifg=white
 "set cursorcolumn
 hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE guibg=darkred guifg=white
 "hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"set cursorline!
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 "---- 3.2 Yggdroot/indentLine
@@ -547,13 +552,13 @@ let g:ycm_key_list_stop_completion = [ '<C-y>', '<Enter>' ]
 "---- 3.20 ----------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " UltiSnips triggering
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 "---- 3.22 incsearch
 map /  <Plug>(incsearch-forward)
