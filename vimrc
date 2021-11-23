@@ -91,7 +91,7 @@ Plug 'airblade/vim-gitgutter'
 " * 12. Open file and go to line via ':' symbol, e.g. file.txt:123
 "Bundle 'bogado/file-line'
 " * 13. fzf on vim
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " * 14. ack on vim
 "Plug 'mileszs/ack.vim'
@@ -447,6 +447,8 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 command! -bang Colors
   \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 60%,0'}, <bang>0)
 
+"nnoremap <silent> <C-g> :call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case <cword>') <CR>
+nnoremap <silent> <C-g> :call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(expand('<cword>')), 1)<CR>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
