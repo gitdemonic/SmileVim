@@ -309,7 +309,7 @@ nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 " ---- 2.3 Autocmd ------------------------------------------------------------
 " * Expand tab in source code -------------------------------------------------
-autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt,*.sh set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt,*.sh,*.xml set shiftwidth=4 | set expandtab
 "autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
 autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
@@ -418,10 +418,14 @@ nmap <F11> :TrinityToggleNERDTree<CR>
 nmap <F12> :TagbarToggle<CR>
 
 "---- 3.11 gitgutter ----------------------------------------------------------
-let mapleader = '\'
+"set signcolumn=yes
 let g:gitgutter_enable = 1
+let g:gitgutter_set_sign_backgrounds = 1
+set updatetime=100
+let mapleader = '\'
 nmap <leader>] <plug>(GitGutterNextHunk)
 nmap <leader>[ <plug>(GitGutterPrevHunk)
+nmap <leader>s <plug>(GitGutterPreviewHunk)
 
 "---- 3.12 fzf/fzf.vim ---------------------------------------------------------
 " * Enable per-command history.
@@ -499,6 +503,8 @@ nnoremap <leader>b :Buffer<CR>
 nnoremap <leader>c :Command<CR>
 nnoremap <leader>l :execute "Line " . expand("<cword>") <Bar> cw<CR>
 nnoremap <leader>h :Hist:
+" screen pure mode, we can copy the string on it
+nnoremap <leader>v :call ToggleScreen()<CR>
 
 function! s:fzf_statusline()
   " Override statusline as you like
@@ -680,6 +686,11 @@ function! ToggleMouse()
     endif
 endfunc
 
+function! ToggleScreen()
+    set nu!
+    set list!
+    GitGutterToggle
+endfunc
 " <TBD>
 "nmap <silent> <C-c> \` :QFix<CR>
 "nnoremap <silent> <C-o> :copen <CR>
