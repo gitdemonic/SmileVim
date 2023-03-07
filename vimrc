@@ -58,7 +58,7 @@ Plug 'VundleVim/Vundle.vim'
 "---- 1.1. Plugins ------------------------------------------------------------
 " * Write your plugins here
 " * 1. plugin on GitHub repo
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " * 2. This plugin is used for displaying thin vertical lines at each
 "      indentation level for code indented with spaces.
 Plug 'Yggdroot/indentLine'
@@ -222,6 +222,7 @@ set list
 set cursorline! cursorcolumn!
 
 set term=xterm-256color
+set so=10
 
 " ---- 2.2 Keybind ------------------------------------------------------------
 " * Mouse mode: Toggle hotkey -------------------------------------------------
@@ -271,7 +272,9 @@ nnoremap <silent> <C-z> :q<CR>
 
 map <F3> :vimgrep /\c/ %
 map <F4> :vimgrepadd /\c/ %
-nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
+"nnoremap <silent> <C-f> :execute "vimgrep /" . expand("<cword>") . "/j %" <Bar> cw<CR>
+nnoremap <silent> <C-g> :execute "Ag " . expand("<cword>") <Bar> cw<CR>
+"nnoremap <silent> <C-g> :call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(expand('<cword>')), 1)<CR>
 
 " Git hotkey
 map <F1> :! git status <cr>
@@ -309,9 +312,9 @@ nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 " ---- 2.3 Autocmd ------------------------------------------------------------
 " * Expand tab in source code -------------------------------------------------
-autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt,*.sh,*.xml set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt,*.sh,*.xml,*.go,*.py set shiftwidth=4 | set expandtab
 "autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
-autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
+"autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.dts,*.dtsi set filetype=dts
 
@@ -427,6 +430,12 @@ nmap <leader>] <plug>(GitGutterNextHunk)
 nmap <leader>[ <plug>(GitGutterPrevHunk)
 nmap <leader>s <plug>(GitGutterPreviewHunk)
 
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
+
 "---- 3.12 fzf/fzf.vim ---------------------------------------------------------
 " * Enable per-command history.
 " * CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -452,7 +461,7 @@ command! -bang Colors
   \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 60%,0'}, <bang>0)
 
 "nnoremap <silent> <C-g> :call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case <cword>') <CR>
-nnoremap <silent> <C-g> :call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(expand('<cword>')), 1)<CR>
+"nnoremap <silent> <C-g> :call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(expand('<cword>')), 1)<CR>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
@@ -543,17 +552,27 @@ nnoremap <Leader>b :TigBlame<CR>
 "---- 3.27 tabnine Settings ---------------------------------------------------
 "let g:ycm_use_clangd = "Always"
 "let g:ycm_clangd_binary_path = "/home/henry/ycm_temp/llvm_root_dir"
-let g:syntastic_java_checkers = []
+"let g:syntastic_java_checkers = []
+" 使用 Ctrl+n 和 Ctrl+p 作為 TabNine 的上下鍵
+let g:TabNine#configuration = {
+    \ 'semantic_trigger_character': ['.', ':', '<', '>', '/', '\\', '*', '^', '(', ')', '{', '}', '[', ']', '@', '$', '#', ',', ';', '"', '`', '?', '|'],
+    \ 'completion_trigger_character': ['.', ':', '<', '>', '/', '\\', '*', '^', '(', ')', '{', '}', '[', ']', '@', '$', '#', ',', ';', '"', '`', '?', '|'],
+    \ 'keymap': {
+        \ 'expand': '<C-n>',
+        \ 'jump_back': '<C-p>',
+    \ }
+\ }
 
-let g:ycm_collect_identifiers_from_tags_files=1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'nerdtree' : 1,
-      \}
+
+"let g:ycm_collect_identifiers_from_tags_files=1
+"let g:ycm_collect_identifiers_from_comments_and_strings = 0
+"let g:ycm_seed_identifiers_with_syntax=1
+"let g:ycm_complete_in_comments = 1
+"let g:ycm_complete_in_strings = 1
+"let g:ycm_filetype_blacklist = {
+"      \ 'tagbar' : 1,
+"      \ 'nerdtree' : 1,
+"      \}
 
 let g:ycm_key_list_stop_completion = [ '<C-y>', '<Enter>' ]
 
@@ -707,6 +726,13 @@ function! QFixToggle(forced)
     let g:qfix_win = bufnr("$")
   endif
 endfunction
+"---- 4.3 Quickfix clear
+function ClearQuickfixList()
+  call setqflist([])
+endfunction
+command! ClearQuickfixList call ClearQuickfixList()
+nmap <leader>cf :ClearQuickfixList<cr>
+
 "==== END 4. Function =========================================================
 
 "==== 5. Bug workaround =======================================================

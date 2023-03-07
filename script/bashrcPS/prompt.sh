@@ -4,7 +4,7 @@ function parse_git_branch() {
     local local_dir=`pwd`
     local SYMBOL_SUN=$'\xf0\x9f\x94\x85'
     local INPUT_FILE_PREFIX='LA.UM.6.2'
-
+exit
     if [[ $local_dir == *"${INPUT_FILE_PREFIX}"* ]] || [ $(ls $local_dir/${INPUT_FILE_PREFIX}* 2>/dev/null | wc -l) == 1 ]; then
         while [[ $local_dir == *${INPUT_FILE_PREFIX}* ]]
         do
