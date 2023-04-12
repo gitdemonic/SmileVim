@@ -1,4 +1,5 @@
 #! /bin/bash
+#
 fd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \

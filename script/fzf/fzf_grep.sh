@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # This scrpit can directly open file via vim when select file(press 'enter')
 # on fzf windows
 

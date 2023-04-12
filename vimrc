@@ -1,4 +1,5 @@
 "==== Overview ================================================================
+
 " 1. Vundle_Plugins_ColorScheme
 " 2. General_Config
 "		2.1		Default
@@ -133,7 +134,9 @@ Plug 't9md/vim-quickhl'
 
 " * 27 2019 Autocompleter
 "Plug 'zxqfl/tabnine-vim'
-Plug 'codota/tabnine-vim'
+"Plug 'codota/tabnine-vim'
+"Plug 'tabnine/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 
 " * 28 nerdcommenter
@@ -144,6 +147,13 @@ Plug 'easymotion/vim-easymotion'
 
 " * 30 ryanoasis/vim-devicons
 "Plug 'ryanoasis/vim-devicons'
+
+" Google Translate for Vim
+"Plug 'google/vim-translate'
+
+" Ramkdown
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 
 "---- 1.2 Vim Color -----------------------------------------------------------
 " How to use color scheme?
@@ -180,6 +190,9 @@ call plug#end()
 syntax on
 " Set it to unnamed to use * (PRIMARY, on select)
 " Set it to unnamedplus to use + (CLIPBOARD, ^C)
+" vim 9.0 new fix
+set backspace=indent,eol,start
+
 set clipboard=unnamedplus
 set hls                 " hightlight search
 set incsearch           " search realtime
@@ -209,7 +222,8 @@ set ls=2
 set fileencoding=gb18030
 set fileencodings=ucs-bom,gb18030,utf-8,default
 " * Recommend use it if usually paste function --------------------------------
-set paste
+" It impact with Copilot
+"set paste
 set modifiable
 " * Mouse mode: default set disable -------------------------------------------
 set mouse-=a
@@ -219,7 +233,7 @@ set mouse-=a
 set listchars=tab:\|.
 " * Show symbol ---------------------------------------------------------------
 set list
-set cursorline! cursorcolumn!
+"set cursorline! cursorcolumn!
 
 set term=xterm-256color
 set so=10
@@ -285,6 +299,12 @@ map <F2> :! tig % <cr>
 " Quick: hotkey
 nmap <silent> <C-c> :QFix<CR>
 
+" General Hotkey
+let mapleader = "."
+"vnoremap <leader>d :'<,'>g/^$/d<CR> " Delete blank line
+vnoremap <leader>d "hy:'<,'>g/^$/d<CR> " Delete blank line
+vnoremap <leader>z "hy:s/<C-r>h//g<left><left> " Replace string
+
 " * Cscope Settings -----------------------------------------------------------
 "if has("cscope")
 "    set csto=0
@@ -309,10 +329,14 @@ nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-Space>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
+let mapleader = ","
+" xclip
+"vnoremap <leader>y :w !xclip -i -sel c<CR><CR>
+"vnoremap <leader>d :g/^$/d<CR>
 
 " ---- 2.3 Autocmd ------------------------------------------------------------
 " * Expand tab in source code -------------------------------------------------
-autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt,*.sh,*.xml,*.go,*.py set shiftwidth=4 | set expandtab
+autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.java,*.xml,*.txt,*.sh,*.xml,*.go,*.py,*vimrc set shiftwidth=4 | set expandtab
 "autocmd BufRead,BufNewFile *.java,*.xml set shiftwidth=4 | set expandtab
 "autocmd BufRead,BufNewFile */kernel/*.c,*/kernel/*.h set shiftwidth=4 | set softtabstop=4 | set noexpandtab
 "autocmd BufRead,BufNewFile *.c,*.h,*.cpp set shiftwidth=4 | set softtabstop=4 | set noexpandtab
@@ -351,6 +375,7 @@ hi CursorLine   cterm=NONE ctermbg=237 ctermfg=NONE guibg=darkred guifg=white
 hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE guibg=darkred guifg=white
 "hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 "set cursorline!
+hi Normal ctermfg=252 ctermbg=none
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 "---- 3.2 Yggdroot/indentLine
@@ -395,7 +420,6 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 
 "---- 3.9 Trinity Settings ----------------------------------------------------
-let mapleader = ","
 " * Taglist
 filetype on
 let Tlist_Use_SingleClick = 1
@@ -441,20 +465,22 @@ set statusline+=%{GitStatus()}
 " * CTRL-N and CTRL-P will be automatically bound to next-history and
 " * previous-history instead of down and up. If you don't like the change,
 " * explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+"\ { 'fg':      ['fg', 'Normal'],
+"  \ 'bg':      ['bg', 'Normal'],
+"let g:fzf_colors =
+"\ { 'fg':      ['fg', 'Normal'],
+"  \ 'bg':      ['bg', 'Normal'],
+"  \ 'hl':      ['fg', 'Comment'],
+"  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"  \ 'hl+':     ['fg', 'Statement'],
+"  \ 'info':    ['fg', 'PreProc'],
+"  \ 'border':  ['fg', 'Ignore'],
+"  \ 'prompt':  ['fg', 'Conditional'],
+"  \ 'pointer': ['fg', 'Exception'],
+"  \ 'marker':  ['fg', 'Keyword'],
+"  \ 'spinner': ['fg', 'Label'],
+"  \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 command! -bang Colors
@@ -549,20 +575,15 @@ nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
 nnoremap <Leader>b :TigBlame<CR>
 
 "---- 3.19 YouCompleteMe ------------------------------------------------------
+let g:ycm_disable_for_files_larger_than_kb = 5000
+"highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+highlight Pmenu ctermfg=27 ctermbg=252 guifg=#ffffff guibg=#000000
+imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
+
 "---- 3.27 tabnine Settings ---------------------------------------------------
 "let g:ycm_use_clangd = "Always"
 "let g:ycm_clangd_binary_path = "/home/henry/ycm_temp/llvm_root_dir"
 "let g:syntastic_java_checkers = []
-" 使用 Ctrl+n 和 Ctrl+p 作為 TabNine 的上下鍵
-let g:TabNine#configuration = {
-    \ 'semantic_trigger_character': ['.', ':', '<', '>', '/', '\\', '*', '^', '(', ')', '{', '}', '[', ']', '@', '$', '#', ',', ';', '"', '`', '?', '|'],
-    \ 'completion_trigger_character': ['.', ':', '<', '>', '/', '\\', '*', '^', '(', ')', '{', '}', '[', ']', '@', '$', '#', ',', ';', '"', '`', '?', '|'],
-    \ 'keymap': {
-        \ 'expand': '<C-n>',
-        \ 'jump_back': '<C-p>',
-    \ }
-\ }
-
 
 "let g:ycm_collect_identifiers_from_tags_files=1
 "let g:ycm_collect_identifiers_from_comments_and_strings = 0
@@ -573,8 +594,11 @@ let g:TabNine#configuration = {
 "      \ 'tagbar' : 1,
 "      \ 'nerdtree' : 1,
 "      \}
-
-let g:ycm_key_list_stop_completion = [ '<C-y>', '<Enter>' ]
+"let g:TabNineMaxLines = 10
+"let g:TabNineMaxNumResults = 8
+"let g:TabNinePriority = 100
+"let g:ycm_key_list_stop_completion = [ '<C-y>', '<Enter>' ]
+"let g:ycm_always_populate_location_list = 1
 
 "---- 3.20 ----------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -715,6 +739,10 @@ endfunc
 "nnoremap <silent> <C-o> :copen <CR>
 "nnoremap <silent> <C-c> :cclose <CR>
 
+" Copilot
+let g:copilot_assume_mapped = v:true
+"highlight CopilotSuggestion guifg=#ffffff ctermfg=8
+
 "---- 4.2 QuickFix toggle -----------------------------------------------------
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
@@ -727,12 +755,36 @@ function! QFixToggle(forced)
   endif
 endfunction
 "---- 4.3 Quickfix clear
-function ClearQuickfixList()
+function! ClearQuickfixList()
   call setqflist([])
 endfunction
 command! ClearQuickfixList call ClearQuickfixList()
 nmap <leader>cf :ClearQuickfixList<cr>
 
+"---- 4.4 Quick search line, copy and paste ------------------------------------
+let s:current_line = 0
+
+function! FzfLines()
+    let s:current_line = line('.')
+    "call fzf#run(fzf#wrap({'source': getline(1, '$'), 'options': '--no-sort', 'sink': function('FzfLinesSink')}))
+    "call fzf#run(fzf#wrap({'source': 'cat -n ' . s:current_file,'options': '--reverse', 'sink': function('FzfLinesSink')}))
+    let s:current_file = expand("%:p")
+    call fzf#run(fzf#wrap({'source': 'cat ' . s:current_file,'options': '--reverse', 'sink': function('FzfLinesSink')}))
+endfunction
+
+function! FzfLinesSink(result)
+    echomsg string(a:result)
+    if !empty(a:result)
+        "let @+ = a:result
+        "let @+ = a:result . "\n"
+        let @+ = a:result . "\n"
+    endif
+    execute 'normal! ' . s:current_line . 'G'
+    normal! P
+endfunction
+
+let mapleader = "."
+nnoremap <leader>f :call FzfLines()<cr>
 "==== END 4. Function =========================================================
 
 "==== 5. Bug workaround =======================================================
@@ -753,57 +805,6 @@ endif
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 " Not used configuration
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-" IndentLinesToggle Setting
-" Toggle cope mode
-"nnoremap <silent> <C-p> :IndentLinesToggle<CR>
-"nnoremap <silent> <C-x> :call ToggleCopyMode() <CR>
-"function! ToogleCopyMode()
-"    :IndentLinesToggle
-"endfunc
-
-"---- 3.10 Syntastic ----------------------------------------------------------
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-"execute pathogen#infect()
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"每次自动调用 :SyntasticSetLocList, 将错误覆盖 **quickfix**
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 1
-"map <F2> :SyntasticToggleMode<CR>
-"---- END ---------------------------------------------------------------------
-
-" < file navigate operation >
-""switch buffer
-"nnoremap <silent> <C-Right> :bn<CR>
-"inoremap <silent> <C-Right> <Esc>:bn<CR>
-"nnoremap <silent> <C-Left> :bp<CR>
-"inoremap <silent> <C-Left> <Esc>:bp<CR>
-
-
-" < file operation >
-"save file
-"nnoremap <silent> <C-s> :w<CR>
-""inoremap <silent> <C-s> <Esc>:w<CR>
-"exit file without save
-"inoremap <silent> <C-q> <Esc>:Bclose!<CR>
-""exit vi and discard all change
-"nnoremap <silent> <F2> :ExitAll<CR>
-"inoremap <silent> <F2> <Esc>:ExitAll<CR>
-"reload file anyway
-"nnoremap <silent> <F5> :e!<CR>
-"inoremap <silent> <F5> <Esc>:e!<CR>
-
 " Magit config test:
 autocmd User VimagitUpdateFile
     \ if ( exists("*gitgutter#process_buffer") ) |
